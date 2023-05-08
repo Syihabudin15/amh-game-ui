@@ -75,6 +75,22 @@
 .sosmed:hover{
     transform: scale(1.1);
 }
+.hero-card{
+    border: 1px solid #aaa;
+    width: 130px;
+    height: 130px;
+    padding: 10px;
+}
+.hero-card img{
+    border: 1px solid #aaa;
+    width: 130px;
+    height: 100px;
+}
+.button-card{
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
 
 @media only screen and (max-width: 600px) {
     .menu-window{
@@ -95,6 +111,10 @@
     .biodata{
         display: flex;
         justify-content: space-between;
+        flex-wrap: nowrap;
         gap: 40px;
+    }
+    .sosmed{
+        padding: 5px 8px;
     }
 }

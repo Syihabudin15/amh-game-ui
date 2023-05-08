@@ -19,7 +19,6 @@
 .sign-or{
     margin-top: 50px;
     text-align: center;
-    /* border-bottom: 1px solid black; */
     text-decoration: underline;
 }
 .sign-with{
@@ -32,6 +31,16 @@
     background: #fff;
     padding: 20px;
     box-sizing: border-box;
+}
+.list-hero-wrap{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+.pagination{
+    text-align: center;
+    margin-top: 50px;
 }
 
 @media only screen and (max-width: 600px) {
