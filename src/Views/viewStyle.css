@@ -1,0 +1,46 @@
+.sign-wrap{
+    width: 40%;
+    margin: 70px auto;
+    border: 1px solid #aaa;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 8px 2px #aaa;
+}
+.sign-form h3{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.sign-button{
+    width: 50%;
+    margin: 20px auto;
+}
+.sign-or{
+    margin-top: 50px;
+    text-align: center;
+    /* border-bottom: 1px solid black; */
+    text-decoration: underline;
+}
+.sign-with{
+    display: flex;
+    justify-content: space-around;
+}
+.event-wrap{
+    width: 80vw;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 600px) {
+    .sign-wrap{
+        width: 80vw;
+        line-height: .6;
+    }
+    .sign-form h3{
+        text-align: left;
+        margin-bottom: 30px;
+    }
+}

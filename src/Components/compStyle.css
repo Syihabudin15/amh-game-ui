@@ -1,0 +1,100 @@
+.menu-wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+}
+.menu-mobile{
+    display: none;
+    margin-right: 20px;
+}
+.left-menu{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.dashboard-top{
+    margin: 50px 15px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 50px;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.adds-wrap{
+    border: 1px solid #aaa;
+    width: 30%;
+    height: 50vh;
+    text-align: center;
+}
+.biodata{
+    display: flex;
+    justify-content: space-between;
+    gap: 120px;
+    line-height: 5px;
+}
+.event-comp{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #aaa;
+    margin: 10px auto;
+    padding: 10px 50px;
+    box-sizing: border-box;
+}
+.event-comp img{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #aaa;
+}
+.footer{
+    border: 1px solid #aaa;
+    text-align: center;
+    margin-top: 30vh;
+}
+.top-footer{
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.bottom-footer{
+    padding: 10px;
+    border: 1px solid #aaa;
+    font-size: .8em;
+    word-spacing: 10px;
+}
+.sosmed{
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 5px 30px;
+}
+.sosmed:hover{
+    transform: scale(1.1);
+}
+
+@media only screen and (max-width: 600px) {
+    .menu-window{
+        display: none;
+    }
+    .menu-mobile{
+        display: inline;
+        align-self: center;
+    }
+    .left-menu{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .adds-wrap{
+        width: 80vw;
+        height: 10vh;
+    }
+    .biodata{
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+    }
+}
