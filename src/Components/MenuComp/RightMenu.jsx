@@ -2,7 +2,7 @@ import { Menu } from "antd";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { UserOutlined, LoginOutlined, LogoutOutlined, ShopTwoTone, WalletTwoTone, 
-    SettingTwoTone, CustomerServiceOutlined, PlayCircleTwoTone } from '@ant-design/icons';
+    SettingTwoTone, CustomerServiceOutlined, PlayCircleTwoTone, CreditCardTwoTone } from '@ant-design/icons';
 import { useNavigate } from "react-router-dom";
 import { updateCurrent } from '../../Reduxs/Actions/MenuSlice';
 import Cookies from "js-cookie";
@@ -41,7 +41,7 @@ function RightMenu({mode}){
         }else{
             setItems([
                 {label: 'Market', key: '/market', icon: <ShopTwoTone />},
-                {label: 'Marketplace', key: '/marketplace'},
+                {label: 'Marketplace', key: '/user/marketplace'},
                 {label: 'My Hero', key: '/user/my-hero'},
                 {label: 'My Wallet', key: '/user/my-wallet', icon: <WalletTwoTone />},
                 {label: 'Game', key:'/game/choose', icon: <PlayCircleTwoTone />},
@@ -50,7 +50,10 @@ function RightMenu({mode}){
                     children: [
                         {label: 'Sign out', key: '#sign-out', danger: true, icon: <LogoutOutlined style={{color: 'red'}}/>, onClick: () => handleLogout()},
                         {label: 'Dashboard', key: '/user/dashboard'},
-                        {label: 'Profile', key: '#profile-menu', children: [{label: 'Setting', key: '/user/setting', icon: <SettingTwoTone />}]},
+                        {label: 'Profile', key: '#profile-menu', children: [
+                            {label: 'Setting', key: '/user/setting', icon: <SettingTwoTone />},
+                            {label: 'My Card', key: '#my-card', icon: <CreditCardTwoTone />}
+                        ]},
                         {label: 'Help Center', key: '/help-center', icon: <CustomerServiceOutlined />}
                     ]
                 }

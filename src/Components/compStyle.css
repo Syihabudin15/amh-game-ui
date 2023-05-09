@@ -88,8 +88,8 @@
 }
 .button-card{
     display: flex;
-    gap: 10px;
-    margin: 10px 0;
+    justify-content: center;
+    margin: 10px auto;
 }
 
 @media only screen and (max-width: 600px) {

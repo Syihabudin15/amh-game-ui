@@ -42,6 +42,54 @@
     text-align: center;
     margin-top: 50px;
 }
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 10px;
+}
+.input-search{
+    width: 30%;
+}
+.price-range{
+    display: flex;
+    width: 150px;
+    gap: 5px;
+}
+.menu-my-hero{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+}
+.wallet-balance{
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    margin: 100px 100px;
+    line-height: 0;
+}
+.bank-logo{
+    font-size: 15em;
+}
+.wallet-transaction{
+    margin-left: 10vw;
+}
+.wallet-transaction button{
+    margin: 10px auto;
+    display: block;
+}
+.col-info{
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
+.history-top{
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    align-items: center;
+}
 
 @media only screen and (max-width: 600px) {
     .sign-wrap{
@@ -51,5 +99,25 @@
     .sign-form h3{
         text-align: left;
         margin-bottom: 30px;
+    }
+    .input-search{
+        width: 50%;
+    }
+    .wallet-balance{
+        margin: 50px 10px;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .bank-logo{
+        font-size: 8em;
+    }
+    .wallet-transaction{
+        display: flex;
+        gap: 15px;
+        margin: 10px auto;
+    }
+    .col-info{
+        gap: 20px;
     }
 }
