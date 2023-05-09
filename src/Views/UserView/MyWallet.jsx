@@ -1,21 +1,26 @@
-import { Fragment } from 'react';
+import { Fragment} from 'react';
 import WalletInfo from '../../Components/WalletComp/WalletInfo';
+import { SendBalance, Deposit, Withdraw } from '../../Components/WalletComp/WalletModal';
+import { Divider, Pagination, Select } from 'antd';
 import '../viewStyle.css';
-import { Button, Divider, Pagination, Select } from 'antd';
+
 
 function MyWallet(){
+
     const options = [
         {label: 'Send', value: 'send'},
         {label: 'Withdraw', value: 'withdraw'}
     ];
+
     return(
         <Fragment>
             <section title="wallet">
                 <section className='wallet-balance'>
                     <WalletInfo/>
                     <div className='wallet-transaction'>
-                        <Button>Send</Button>
-                        <Button>Withdraw</Button>
+                        <SendBalance />
+                        <Deposit />
+                        <Withdraw />
                     </div>
                 </section>
                 <Divider/>
