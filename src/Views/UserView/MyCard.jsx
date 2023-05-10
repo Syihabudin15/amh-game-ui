@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Button, Form, Input, Select, Table } from "antd";
+import { DeleteFilled } from '@ant-design/icons';
 
 function MyCard(){
     const columns = [
@@ -8,7 +9,9 @@ function MyCard(){
         {title: 'No Bank', dataIndex: 'no_bank'},
         {title: 'Act', dataIndex: 'act', render: (data) => (
             <div style={{display: "flex", gap: 5}}>
-                <Button>Delete</Button>
+                <Button>
+                    <DeleteFilled style={{color: 'red'}} />
+                </Button>
             </div>
         )}
     ];

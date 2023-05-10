@@ -4,7 +4,7 @@ import '../compStyle.css';
 function Biodata({name, value}){
     return(
         <Row className='biodata'>
-            <Col>
+            <Col style={{fontWeight: 'bold', fontStyle: 'italic'}}>
                 <p>{name}</p>
             </Col>
             <Col><p>:</p></Col>

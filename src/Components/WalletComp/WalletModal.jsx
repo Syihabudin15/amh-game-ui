@@ -17,7 +17,7 @@ export function SendBalance(){
 
     return(
         <Fragment>
-            <Button onClick={() => setOpen(true)}>Send</Button>
+            <Button onClick={() => setOpen(true)} type="primary">Send</Button>
             <Modal title='Send Balance' open={open} onCancel={() => setOpen(false)} 
                 footer={[
                     <Button onClick={() => sendBalance()} loading={loading}>Confirm</Button>,
@@ -48,7 +48,7 @@ export function Deposit(){
 
     return(
         <Fragment>
-            <Button onClick={() => setOpen(true)} >Deposit</Button>
+            <Button onClick={() => setOpen(true)} type="primary" >Deposit</Button>
             <Modal open={open} onCancel={() => setOpen(false)} title="Deposit"
                 footer={[
                     <Button onClick={() => createDeposit()}>Confirm</Button>
@@ -72,7 +72,7 @@ export function Withdraw(){
     const [open, setOpen] = useState(false);
     return(
         <Fragment>
-            <Button onClick={() => setOpen(true)}>Withdraw</Button>
+            <Button onClick={() => setOpen(true)} type="primary" >Withdraw</Button>
             <Modal title='Withdraw' open={open} onCancel={() => setOpen(false)}>
                 <Form>
                     <Form.Item label='Amount'>

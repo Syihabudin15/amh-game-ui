@@ -21,6 +21,7 @@
     gap: 50px;
     background-color: #fff;
     padding: 20px;
+    box-shadow: 5px 3px 5px #aaa;
     box-sizing: border-box;
 }
 .adds-wrap{
@@ -34,6 +35,9 @@
     justify-content: space-between;
     gap: 120px;
     line-height: 5px;
+}
+.event-wrap{
+    box-shadow: 5px 5px 5px #aaa;
 }
 .event-comp{
     display: flex;

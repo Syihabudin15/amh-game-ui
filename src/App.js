@@ -6,6 +6,7 @@ import { getUser } from "./Reduxs/Actions/UserSlice";
 import { Spin } from "antd";
 import Cookies from "js-cookie";
 import MenuWrapper from "./Components/MenuComp/Menu";
+import { setLogin } from "./Reduxs/Actions/MenuSlice";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -15,6 +16,7 @@ function App() {
     let token = Cookies.get('auth-token');
     if(token){
       dispatch(getUser());
+      dispatch(setLogin(true));
     }
     setLoading(false);
   }, [dispatch]);

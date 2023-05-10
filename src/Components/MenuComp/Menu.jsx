@@ -82,7 +82,7 @@ function MenuWrapper(){
                 </Col>
             </Row>
             <Drawer title='Menu' open={open} onClose={() => setOpen(false)} width={'70vw'}>
-                <Menu mode="inline" items={items} selectedKeys={current} style={{backgroundColor: '#fff'}} />
+                <Menu mode="inline" items={items} onClick={(e) => handleClick(e)} selectedKeys={current} style={{backgroundColor: '#fff'}} />
             </Drawer>
         </section>
     )
