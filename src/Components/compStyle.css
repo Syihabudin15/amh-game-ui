@@ -24,17 +24,25 @@
     box-shadow: 5px 3px 5px #aaa;
     box-sizing: border-box;
 }
+.bio-wrap{
+    margin-left: 10vw;
+    width: 50vw;
+    line-height: 2;
+}
+.link-setting{
+    text-align: right;
+    margin: 30px 100px 10px 0;
+    font-style: italic;
+}
+.user-info{
+    font-style: italic;
+    word-spacing: 3px;
+}
 .adds-wrap{
     border: 1px solid #aaa;
     width: 30%;
     height: 50vh;
     text-align: center;
-}
-.biodata{
-    display: flex;
-    justify-content: space-between;
-    gap: 120px;
-    line-height: 5px;
 }
 .event-wrap{
     box-shadow: 5px 5px 5px #aaa;
@@ -79,21 +87,37 @@
 .sosmed:hover{
     transform: scale(1.1);
 }
-.hero-card{
-    border: 1px solid #aaa;
-    width: 130px;
-    height: 130px;
+.collection-card-wrapper{
+    width: 250px;
+    height: 280px;
+    border: 1px solid black;
+    border-radius: 10px 10px 0 0;
+}
+.img-collection-wrap img{
+    max-height: 170px;
+    max-width: 250px;
+    border-radius: 10px 10px 0 0;
+}
+.collection-card-button{
+    display: flex;
+    justify-content: space-between;
     padding: 10px;
 }
-.hero-card img{
+.hero-card{
     border: 1px solid #aaa;
-    width: 130px;
-    height: 100px;
+    width: 140px;
+    height: 170px;
+    background-color: #fff;
+    border-radius: 8px 8px 0 0;
+    padding: 2px;
+}
+.hero-card img{
+    border-radius: 8px 8px 0 0;
 }
 .button-card{
     display: flex;
     justify-content: center;
-    margin: 10px auto;
+    margin: 5px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -108,15 +132,16 @@
         padding-left: 50px;
         padding-right: 50px;
     }
+    .bio-wrap{
+        width: 80vw;
+        margin-left: 0;
+    }
+    .link-setting{
+        margin-right: 0;
+    }
     .adds-wrap{
         width: 80vw;
         height: 10vh;
-    }
-    .biodata{
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-        gap: 40px;
     }
     .sosmed{
         padding: 5px 8px;

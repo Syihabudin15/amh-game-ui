@@ -26,13 +26,7 @@ function SignIn(){
                 nav('/user/dashboard');
             })
             .catch(err => {
-                if(err.response.data.statusCode === 404){
-                    notification.error({message: 'Email is not registered'});
-                }else if(err.response.data.statusCode === 401){
-                    notification.error({message: 'Wrong email or password'});
-                }else{
-                    notification.error({message: 'Server Error. please try again later'});
-                }
+                notification.error({message: 'Wrong email or password'});
                 setSpin(false);
             })
         }catch{

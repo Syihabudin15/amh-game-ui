@@ -1,15 +1,37 @@
 import { Row, Col } from 'antd';
 import '../compStyle.css';
+import { Fragment } from 'react';
 
-function Biodata({name, value}){
+function Biodata({user}){
+    let {firstName, lastName, phone, email, isVerified} = user;
     return(
-        <Row className='biodata'>
-            <Col style={{fontWeight: 'bold', fontStyle: 'italic'}}>
-                <p>{name}</p>
-            </Col>
-            <Col><p>:</p></Col>
-            <Col><p>{value !== null ? value : 'Not Set'}</p></Col>
-        </Row>
+        <Fragment>
+            <Row>
+                <Col span={6} className='bold-info'>Name</Col>
+                <Col span={3}>:</Col>
+                <Col className='user-info'>{firstName ? `${firstName} ${lastName}` : 'Not Set' }</Col>
+            </Row>
+            <Row>
+                <Col span={6} className='bold-info'>Email</Col>
+                <Col span={3}>:</Col>
+                <Col className='user-info'>{email}</Col>
+            </Row>
+            <Row>
+                <Col span={6} className='bold-info'>Phone</Col>
+                <Col span={3}>:</Col>
+                <Col className='user-info'>{phone}</Col>
+            </Row>
+            <Row>
+                <Col span={6} className='bold-info'>Verified</Col>
+                <Col span={3}>:</Col>
+                <Col className='user-info'>{isVerified ? 'Verified' : 'Not Verified'}</Col>
+            </Row>
+            <Row>
+                <Col span={6} className='bold-info'>Hero</Col>
+                <Col span={3}>:</Col>
+                <Col className='user-info'>0</Col>
+            </Row>
+        </Fragment>
     )
 };
 

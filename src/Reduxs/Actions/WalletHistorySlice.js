@@ -1,13 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { notification } from "antd";
 
 export const getHistoryWallet = createAsyncThunk('/wallet/history', async (type) => {
     let token = Cookies.get('auth-token');
-    if(!token){
-        notification.error({message: 'Cannot get Wallet, please Login'});
-    }
     let result = await axios.request({
         method: 'GET',
         url: `https://amh-game-api.up.railway.app/api/user/wallet/history-${type}`,
@@ -32,7 +28,6 @@ const WalletHistorySlice = createSlice({
         },
         [getHistoryWallet.rejected]: (state) => {
             state.loading = false;
-            notification.error({message: 'server error'});
         },
         [getHistoryWallet.fulfilled]: (state, action) => {
             let data = [];

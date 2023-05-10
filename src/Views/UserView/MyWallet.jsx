@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState} from 'react';
-import WalletInfo from '../../Components/WalletComp/WalletInfo';
 import { SendBalance, Deposit, Withdraw } from '../../Components/WalletComp/WalletModal';
-import { Divider, Pagination, Select, Spin, Table } from 'antd';
+import { BankTwoTone } from '@ant-design/icons';
+import { Col, Divider, Pagination, Select, Spin, Table, Row } from 'antd';
 import '../viewStyle.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWallet } from '../../Reduxs/Actions/WalletSlice';
@@ -47,7 +47,21 @@ function MyWallet(){
             <Spin spinning={isLoading}>
                 <section title="wallet">
                     <section className='wallet-balance'>
-                        <WalletInfo balance={balance} noWallet={noWallet}/>
+                        <div>
+                            <BankTwoTone className='bank-logo' />
+                        </div>
+                        <div className='balance-info'>
+                            <Row>
+                                <Col span={10} className='bold-info'>Balance</Col>
+                                <Col span={3}>:</Col>
+                                <Col span={10}><i className='bold-info' style={{marginRight: 5}}>Rp.</i> {balance}</Col>
+                            </Row>
+                            <Row>
+                                <Col span={10} className='bold-info'>No Wallet</Col>
+                                <Col span={3}>:</Col>
+                                <Col span={10}>{noWallet}</Col>
+                            </Row>
+                        </div>
                         <div className='wallet-transaction'>
                             <SendBalance />
                             <Deposit />

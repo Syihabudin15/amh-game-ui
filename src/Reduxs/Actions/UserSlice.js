@@ -5,9 +5,6 @@ import Cookies from "js-cookie";
 
 export const getUser = createAsyncThunk('user/getUser', async () => {
     let token = Cookies.get('auth-token');
-    if(!token){
-        notification.error({message: 'Please Login'});
-    }
     let result = await axios.request({
         method: 'GET',
         url: 'https://amh-game-api.up.railway.app/api/user',
@@ -42,6 +39,8 @@ const UserSlice = createSlice({
         },
         [getUser.rejected]: (state) => {
             state.errMessage = 'Error From redux';
+            notification.error({message: 'Please Login'});
+            state.isLoading = false;
         },
         [getUser.fulfilled]: (state, action) => {
             state.isLoading = false;

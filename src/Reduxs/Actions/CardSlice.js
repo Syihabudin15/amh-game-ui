@@ -1,13 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { notification } from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 export const getCard = createAsyncThunk('', async () => {
     let token = Cookies.get('auth-token');
-    if(!token){
-        notification.error({message: 'Please Login'});
-    }
     let result = await axios.request({
         method: 'GET',
         url: 'https://amh-game-api.up.railway.app/api/user/card',
@@ -31,7 +27,6 @@ const CardSlice = createSlice({
             state.isLoading = true;
         },
         [getCard.rejected]: (state) => {
-            notification.error({message: 'Server error, please try again later'});
             state.isLoading = false;
         },
         [getCard.fulfilled]: (state, action) => {

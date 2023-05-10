@@ -64,25 +64,25 @@
 }
 .wallet-balance{
     display: flex;
-    gap: 100px;
     align-items: center;
-    margin: 100px 100px;
-    line-height: 0;
+    justify-content: space-around;
 }
 .bank-logo{
     font-size: 15em;
 }
-.wallet-transaction{
-    margin-left: 10vw;
+.balance-info{
+    width: 30%;
+    line-height: 2;
+    border-bottom: 1px solid #aaa;
+}
+.bold-info{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.1em;
 }
 .wallet-transaction button{
     margin: 10px auto;
     display: block;
-}
-.col-info{
-    display: flex;
-    justify-content: space-between;
-    gap: 80px;
 }
 .history-top{
     display: flex;
@@ -170,14 +170,16 @@
     .bank-logo{
         font-size: 8em;
     }
+    .balance-info{
+        width: 80vw;
+        text-align: justify;
+    }
     .wallet-transaction{
         display: flex;
         gap: 15px;
         margin: 10px auto;
     }
-    .col-info{
-        gap: 20px;
-    }
+    
     .setting{
         width: 80vw;
         margin: 50px auto;

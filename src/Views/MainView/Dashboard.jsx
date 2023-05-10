@@ -19,19 +19,15 @@ function Dashboard(){
                 <h1 style={{textAlign: 'center', margin: 50, textShadow: '4px 4px 4px #aaa'}}>Hello {user.firstName ? user.firstName : 'and Welcome'}</h1>
                 <div className="dashboard-top">
                     <div className="bio-wrap">
-                        <Biodata name='Name' value={user.firstName ? `${user.firstName} ${user.lastName}` : 'Not Set'} />
-                        <Biodata name='Email' value={user.email} />
-                        <Biodata name='Phone' value={user.phone} />
-                        <Biodata name='Status' value={user.verified ? 'Verified' : 'Not Verified'} />
-                        <Biodata name={<Link to='/user/my-hero'>Hero</Link>} value='1' />
-                        <p style={{textAlign: 'right', fontStyle: 'italic', marginTop: 30}}>
+                        <Biodata user={user} />
+                        <p className='link-setting'>
                             <Link to='/user/setting'>Setting</Link>
                         </p>
                     </div>
                     <div className="adds-wrap">
                         <p>Adds Here</p>
                     </div>
-                </div>
+                </div> 
 
                 <section title='list event' className='event-wrap'>
                     <h3 style={{textAlign: 'center'}}>Active Events</h3>

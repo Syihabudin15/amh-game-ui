@@ -11,9 +11,9 @@ function HeroCard(){
     return(
         <Fragment>
             <div className="hero-card">
-                <Image src='#' alt='hero 1' />
+                <Image src='https://source.unsplash.com/random/300×300/?fruit' alt='hero 1' width={140} height={130}/>
                 <div className="button-card">
-                    <Button type="primary" onClick={() => setOpen(true)}>Detail</Button>
+                    <Button type="primary" onClick={() => setOpen(true)} block>Detail</Button>
                 </div>
             </div>
             <Modal open={isOpen} footer={[
