@@ -4,6 +4,7 @@ import UserRouter from './UserRouter';
 import { Fragment } from "react";
 import Footer from '../Components/Utils/Footer';
 import Market from '../Views/MarketView/Market';
+import GameRouter from "./GameRouter";
 
 function MainRouter(){
     return(
@@ -11,6 +12,7 @@ function MainRouter(){
             <Routes>
                 <Route path="/user/*" element={<UserRouter/>} />
                 <Route path="/market" element={<Market/>} />
+                <Route path="/game/*" element={<GameRouter/>} />
                 <Route path="/" element={<Main/>} />
             </Routes>
             <Footer />

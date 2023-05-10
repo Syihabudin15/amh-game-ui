@@ -1,21 +1,45 @@
 import { Form, Input, Button, Spin, notification, Checkbox } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FacebookFilled, GoogleSquareFilled } from '@ant-design/icons';
-
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setLogin } from "../../Reduxs/Actions/MenuSlice";
 
 function SignIn(){
     const [spin, setSpin] = useState(false);
     const [checked, setChecked] = useState(true);
+    const nav = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmit = async(e) => {
         setSpin(true);
-        console.log(e);
-        console.log(checked);
-        setTimeout( () => {
+        try{
+            await axios.post('https://amh-game-api.up.railway.app/api/sign-in', {email: e.email, password: e.password})
+            .then(res => {
+                notification.success({message: 'Login Success'});
+                Cookies.set('auth-token', res.data.data.token, {expires: 2});
+                setSpin(false);
+                dispatch(setLogin(true));
+                nav('/user/dashboard');
+            })
+            .catch(err => {
+                notification.error({message: err.message});
+                setSpin(false);
+            })
+        }catch{
+            notification.error({message: 'Login Failed, we have an error from server'});
             setSpin(false);
-            notification.success({message: 'Sign In Success'});
-        }, 2000);
+        }
     };
+
+    useEffect(() => {
+        let token = Cookies.get('auth-token');
+        if(token){
+            nav('/user/Dashboard');
+        }
+    }, [nav]);
 
     return(
         <section title="sign in form" className="sign-wrap">

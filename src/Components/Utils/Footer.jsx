@@ -12,8 +12,8 @@ function Footer(){
     return(
         <section title="footer" className="footer">
             <div className="top-footer">
-                {sosmeds.map((e) => (
-                    <div className="sosmed">
+                {sosmeds.map((e, i) => (
+                    <div className="sosmed" key={i}>
                         <span>
                             {e.icon}
                             <Link to={e.link} style={{marginLeft: 5}}>{e.name}</Link>

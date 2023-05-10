@@ -1,19 +1,31 @@
-import { Fragment } from "react";
-import Menu from "./Components/MenuComp/Menu";
-import { BrowserRouter } from "react-router-dom";
+import { Fragment, useEffect, useState } from "react";
 import MainRouter from "./Routers/MainRouter";
 import AuthRouter from "./Routers/AuthRouter";
-
+import { useDispatch } from "react-redux";
+import { getUser } from "./Reduxs/Actions/UserSlice";
+import { Spin } from "antd";
+import Cookies from "js-cookie";
+import MenuWrapper from "./Components/MenuComp/Menu";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let token = Cookies.get('auth-token');
+    if(token){
+      dispatch(getUser());
+    }
+    setLoading(false);
+  }, [dispatch]);
   return (
-    <BrowserRouter>
-      <Fragment>
-        <Menu/>
-        <AuthRouter/>
-        <MainRouter/>
-      </Fragment>
-    </BrowserRouter>
+    <Spin spinning={loading}>
+        <Fragment>
+          <MenuWrapper/>
+          <AuthRouter/>
+          <MainRouter/>
+        </Fragment>
+    </Spin>
   );
 }
 

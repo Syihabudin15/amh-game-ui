@@ -1,12 +1,12 @@
 import { Fragment } from "react";
-import { Input, Pagination, Select } from "antd";
+import { Divider, Input, Pagination, Select } from "antd";
 import HeroCard from "../../Components/MarketComp/HeroCard";
 
 function Marketplace(){
     return(
         <Fragment>
             <div className="search">
-                <Input.Search placeholder="Collection Name" className="input-search"/>
+                <Input placeholder="Collection Name" className="input-search"/>
                 <Select options={[
                     {label: 'Level 1', value: 1},
                     {label: 'Level 2', value: 2}
@@ -15,6 +15,7 @@ function Marketplace(){
                     <Input placeholder="price" /> <Input placeholder="range" />
                 </div>
             </div>
+            <Divider/>
             <section title="list hero marketplace">
                 <div className="list-hero-wrap">
                     <HeroCard/>

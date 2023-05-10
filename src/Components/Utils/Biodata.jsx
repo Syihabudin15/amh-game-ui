@@ -8,7 +8,7 @@ function Biodata({name, value}){
                 <p>{name}</p>
             </Col>
             <Col><p>:</p></Col>
-            <Col><p>{value ? value : 'Not Set'}</p></Col>
+            <Col><p>{value !== null ? value : 'Not Set'}</p></Col>
         </Row>
     )
 };

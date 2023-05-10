@@ -90,6 +90,64 @@
     gap: 120px;
     align-items: center;
 }
+.setting{
+    width: 40vw;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px #aaa;
+}
+.setting input{
+    margin-left: 50px;
+    width: 80%;
+}
+.setting-button{
+    margin: 80px 0 10px 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+.not-show{
+    display: none;
+}
+.row-my-card{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 100px 20px;
+}
+.no1{
+    width: 60vw;
+    border-radius: 10px;
+}
+.col-my-card{
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 2px 2px 2px #aaa;
+}
+.col-game{
+    border: 1px solid #aaa;
+    width: 30%;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fff;
+    /* background-color: #2d2d2d;
+    color: #fff; */
+}
+.list-game{
+    margin: 50px 0;
+}
+.rules-game{
+    margin: 100px 20px;
+    background-color: #fff;
+    padding: 10px;
+}
+.rules-game p{
+    max-height: 250px;
+    overflow-y: auto;
+}
 
 @media only screen and (max-width: 600px) {
     .sign-wrap{
@@ -119,5 +177,23 @@
     }
     .col-info{
         gap: 20px;
+    }
+    .setting{
+        width: 80vw;
+        margin: 50px auto;
+    }
+    .setting input{
+        margin-left: 10px;
+    }
+    .row-my-card{
+        justify-content: center;
+    }
+    .no1{
+        width: 90vw;
+        padding: 10px;
+    }
+    .col-game{
+        width: auto;
+        margin: 10px;
     }
 }

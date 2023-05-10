@@ -1,22 +1,52 @@
 import { Button, Form, Input, Spin, notification } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FacebookFilled, GoogleSquareFilled } from '@ant-design/icons';
 import '../viewStyle.css';
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function SignUp(){
     const [spin, setSpin] = useState(false);
-    const handleSubmit = async () => {
+    const nav = useNavigate();
+
+    const handleSubmit = async (e) => {
+        let form = new FormData();
+        form.append('email', e.email);
+        form.append('phone', e.phone);
+        form.append('password', e.password);
+        
         setSpin(true);
-        setTimeout( () => {
+        try{
+            console.log(e)
+            await axios.post('https://amh-game-api.up.railway.app/api/sign-up', form)
+            .then(res => {
+                notification.success({message: 'Register Success, redirect to Login'});
+                setSpin(false);
+                console.log(res);
+                nav('/sign-in');
+            }).catch(err => {
+                notification.error({message: err.message});
+            });
+        }catch{
+            notification.error({message: 'We have an error, try again later'});
             setSpin(false);
-            notification.success({message: 'Sign In Success'});
-        }, 2000);
+        }finally{
+            setSpin(false);
+        }
     };
+
+    useEffect(() => {
+        let token = Cookies.get('auth-token');
+        if(token){
+            nav('/user/dashboard');
+        }
+    }, [nav]);
 
     return(
         <section title="sign up form" className="sign-wrap">
             <div className="sign-form">
-                <h3>Sign Up</h3>
+                <h3>Create new account</h3>
                 <Form labelCol={{span: 4}} onFinish={handleSubmit}>
                     <Form.Item label='Email' name='email'>
                         <Input placeholder="Email Address" />
@@ -30,7 +60,7 @@ function SignUp(){
                         <Input.Password />
                     </Form.Item>
 
-                    <Form.Item label='Confirm' name='password'>
+                    <Form.Item label='Confirm' name='conf'>
                         <Input.Password />
                     </Form.Item>
 
