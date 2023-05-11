@@ -159,6 +159,9 @@
     max-height: 250px;
     overflow-y: auto;
 }
+.disable-pagination{
+    display: none;
+}
 
 @media only screen and (max-width: 600px) {
     .sign-wrap{

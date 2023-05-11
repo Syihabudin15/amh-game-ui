@@ -2,7 +2,7 @@ import { Button, Image, Modal } from "antd";
 import '../compStyle.css';
 import { Fragment, useState } from "react";
 
-function HeroCard(){
+function HeroCard({data}){
     const [isOpen, setOpen] = useState(false);
 
     const buyClick = () => {
@@ -11,7 +11,7 @@ function HeroCard(){
     return(
         <Fragment>
             <div className="hero-card">
-                <Image src='https://source.unsplash.com/random/300×300/?fruit' alt='hero 1' width={140} height={130}/>
+                <Image src={`https://amh-game-api.up.railway.app/img/${data.img}`} alt={data.level} width={140} height={130}/>
                 <div className="button-card">
                     <Button type="primary" onClick={() => setOpen(true)} block>Detail</Button>
                 </div>

@@ -11,26 +11,13 @@ function SignUp(){
     const nav = useNavigate();
 
     const handleSubmit = async (e) => {
-        let form = new FormData();
-        form.append('email', e.email);
-        form.append('phone', e.phone);
-        form.append('password', e.password);
-        
         setSpin(true);
         try{
-            console.log(e)
-            await axios.post('https://amh-game-api.up.railway.app/api/sign-up', form)
-            .then(res => {
-                notification.success({message: 'Register Success, redirect to Login'});
-                setSpin(false);
-                console.log(res);
-                nav('/sign-in');
-            }).catch(err => {
-                notification.error({message: err.message});
-            });
+            // eslint-disable-next-line
+            let result = await axios.post('https://amh-game-api.up.railway.app/api/sign-up', {email: e.email, phone: e.phone, password: e.password});
+            notification.success({message: 'Register Success'});
         }catch{
             notification.error({message: 'We have an error, try again later'});
-            setSpin(false);
         }finally{
             setSpin(false);
         }

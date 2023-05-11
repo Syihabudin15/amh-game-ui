@@ -19,6 +19,7 @@ function VerifyUser(){
         setLoading(true);
 
         try{
+            // eslint-disable-next-line
             let sendEmail = await axios.post({
                 method: 'POST',
                 url: 'https://amh-game-api.up.railway.app/api/user/req-verify',
@@ -47,6 +48,7 @@ function VerifyUser(){
     const verifyOtp = async () => {
         setLoadConfirm(true);
         try{
+            // eslint-disable-next-line
             let verify = await axios.post({
                 method: 'POST',
                 url: 'https://amh-game-api.up.railway.app/api/user/verify',
