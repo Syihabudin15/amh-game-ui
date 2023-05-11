@@ -81,6 +81,26 @@ function MyCard(){
                         </Form>
                     </div>
                 </div>
+                <div className="adds-wrap-mycard">
+                    <div className="add-1">
+						<a href="https://rollercoin.com/?r=kk1kson4">
+							<img src="https://static.rollercoin.com/static/img/ref/gen2/w250h250.gif" alt="250h250"/>
+						</a>
+                    </div>
+                    <div className="add-2">
+						<a href="https://rollercoin.com/?r=kk1kson4">
+							<img src="https://static.rollercoin.com/static/img/ref/gen2/w460h60.gif" alt="460h60"/>
+						</a>
+                        <a href="https://rollercoin.com/?r=kk1kson4" className="add-2-after">
+							<img src="https://static.rollercoin.com/static/img/ref/gen2/w460h60.gif" alt="460h60"/>
+						</a>
+                    </div>
+                    <div className="add-1">
+						<a href="https://rollercoin.com/?r=kk1kson4">
+							<img src="https://static.rollercoin.com/static/img/ref/gen2/w250h250.gif" alt="250h250"/>
+						</a>
+                    </div>
+                </div>
             </section>
         </Fragment>
     )

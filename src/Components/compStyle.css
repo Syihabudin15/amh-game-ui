@@ -18,7 +18,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     align-items: center;
-    gap: 50px;
+    gap: 20px;
     background-color: #fff;
     padding: 20px;
     box-shadow: 5px 3px 5px #aaa;
@@ -30,8 +30,7 @@
     line-height: 2;
 }
 .link-setting{
-    text-align: right;
-    margin: 30px 100px 10px 0;
+    text-align: center;
     font-style: italic;
 }
 .user-info{
@@ -39,10 +38,12 @@
     word-spacing: 3px;
 }
 .adds-wrap{
-    border: 1px solid #aaa;
     width: 30%;
     height: 50vh;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #aaa;
 }
 .event-wrap{
     box-shadow: 5px 5px 5px #aaa;
@@ -137,11 +138,13 @@
         margin-left: 0;
     }
     .link-setting{
-        margin-right: 0;
+        text-align: right;
     }
     .adds-wrap{
         width: 80vw;
-        height: 10vh;
+        height: 20vh;
+        border-top: 1px solid #aaa;
+        border-left: none;
     }
     .sosmed{
         padding: 5px 8px;

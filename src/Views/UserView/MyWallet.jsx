@@ -69,6 +69,11 @@ function MyWallet(){
                         </div>
                     </section>
                     <Divider/>
+                    <div className='add-wrap-mywallet'>                        
+						<a href="https://rollercoin.com/?r=kk1kson4">
+							<img src="https://static.rollercoin.com/static/img/ref/gen2/w970h90.gif" alt="970h90"/>
+						</a>
+                    </div>
                     <section title='history'>
                         <div className='history-top'>
                             <h3>History</h3>

@@ -12,7 +12,7 @@ function Dashboard(){
     useEffect(() => {
         dis(getUser());
     }, [dis]);
-    
+    // eslint-disable-next-line 
     return(
         <Spin spinning={user.isLoading}>
             <section title="user dashboard">
@@ -25,7 +25,9 @@ function Dashboard(){
                         </p>
                     </div>
                     <div className="adds-wrap">
-                        <p>Adds Here</p>
+                        <a href="https://rollercoin.com/?r=kk1kson4">
+                            <img src="https://static.rollercoin.com/static/img/ref/gen2/w320h100.gif"/> 
+                        </a> 
                     </div>
                 </div> 
 
