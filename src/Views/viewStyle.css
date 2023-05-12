@@ -167,7 +167,48 @@
     max-height: 250px;
     overflow-y: auto;
 }
-
+.main-top{
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 10px;
+    padding: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #aaa;
+}
+.main-top-desc{
+    margin-left: 100px;
+}
+.main-feature{
+    width: 90vw;
+    text-align: center;
+    border: 1px solid #aaa;
+    margin: 50px auto;
+}
+.feature-img-game{
+    margin: 50px 0;
+}
+.feature-carousel{
+    margin: 20px 0;
+}
+.count-status{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 50px 10px;
+    padding: 20px;
+    border: 1px solid #aaa;
+}
+.main-footer{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #aaa;
+    flex-wrap: wrap;
+}
 @media only screen and (max-width: 600px) {
     .sign-wrap{
         width: 80vw;
@@ -235,5 +276,11 @@
     }
     .add-2-after{
         display: inline;
+    }
+    .main-top-desc{
+        margin-left: 0;
+    }
+    .main-top-img{
+        display: none;
     }
 }

@@ -52,7 +52,7 @@ function MenuWrapper(){
             ]);
         }else{
             setItems([
-                {label: 'About Us', key: '/about'},
+                {label: 'About Us', key: '/'},
                 {label: 'Blog', key: '/blog'},
                 {label: 'Market', key: '/market'},
                 {key: '#auth-menu', icon: <UserOutlined style={{
