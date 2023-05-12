@@ -1,15 +1,17 @@
 import { Fragment, useEffect, useState } from "react";
-import { Button, Form, Input, Spin } from "antd";
+import { Button, Form, Input, Spin, notification } from "antd";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from '../../Reduxs/Actions/UserSlice';
+import { getUser, UserUpdate } from '../../Reduxs/Actions/UserSlice';
 import { LeftCircleFilled } from '@ant-design/icons';
 import VerifyUser from "../../Components/Utils/VerifyUser";
 
 function Setting(){
     const [disable, setDisable] = useState(true);
     const [show, setShow] = useState(false);
-    const {verified, firstName, lastname, phone, email, isLoading} = useSelector(state => state.user);
+    const [first, setFirst] = useState();
+    const [last, setLast] = useState();
+    const {verified, firstName, lastName, phone, email, isLoading} = useSelector(state => state.user);
     const dis = useDispatch();
 
     const handleEdit = () => {
@@ -21,8 +23,24 @@ function Setting(){
         setShow(false);
     };
 
+    const handleFinish = () => {
+        if(!first || !last){
+            return notification.error({message: 'Firstname and Lastname is required'});
+        }
+        try{
+            dis(UserUpdate({firstName: first, lastName: last}));
+            notification.success({message: 'Update Success'});
+            setDisable(true);
+            setShow(false);
+        }catch(err){
+            notification.error({message: err.message});
+        }
+    };
+
     useEffect(() => {
         dis(getUser());
+        setFirst(firstName); // eslint-disable-next-line
+        setLast(lastName); // eslint-disable-next-line
     }, [dis]);
 
     return(
@@ -39,11 +57,11 @@ function Setting(){
                     <Spin spinning={isLoading}>
                         <Form labelCol={{span: 5}}>
                             <Form.Item label='First Name'>
-                                <Input value={firstName} disabled={disable} />
+                                <Input value={first} disabled={disable} onChange={(e) => setFirst(e.target.value)} />
                             </Form.Item>
 
                             <Form.Item label='Last Name'>
-                                <Input value={lastname} disabled={disable} />
+                                <Input value={last} disabled={disable} onChange={(e) => setLast(e.target.value)} />
                             </Form.Item>
 
                             <Form.Item label='Phone Number'>
@@ -67,7 +85,7 @@ function Setting(){
                 <div className="setting-button">
                     <Button className={show ? 'not-show' : null} onClick={() => handleEdit()}>Edit</Button>
                     <Button className={show ? null : 'not-show'} onClick={() => handleCancel()}>Cancel</Button>
-                    <Button className={show ? null : 'not-show'}>Confirm</Button>
+                    <Button className={show ? null : 'not-show'} onClick={() => handleFinish()}>Confirm</Button>
                 </div>
             </section>
         </Fragment>

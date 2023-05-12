@@ -17,11 +17,25 @@ export const getUser = createAsyncThunk('user/getUser', async () => {
     return result.data.data;
 });
 
+export const UserUpdate = createAsyncThunk('/user/update', async(data) => {
+    let token = Cookies.get('auth-token');
+    let result = await axios.request({
+        method: 'PUT',
+        url: 'https://amh-game-api.up.railway.app/api/user/update',
+        headers: {
+            accept: 'application/json',
+            'content-type': 'application/json',
+            'auth-token': `${token}`
+        },
+        data: data
+    });
+    return result.data.data;
+})
+
 const UserSlice = createSlice({
     name: 'UserSlice',
     initialState: {
         isLoading: false,
-        errMessage: null,
         firstName: null,
         lastName: null,
         phone: null,
@@ -38,11 +52,26 @@ const UserSlice = createSlice({
             state.isLoading = true;
         },
         [getUser.rejected]: (state) => {
-            state.errMessage = 'Error From redux';
             notification.error({message: 'Please Login'});
             state.isLoading = false;
         },
         [getUser.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.firstName = action.payload.firstName;
+            state.lastName = action.payload.lastName;
+            state.phone = action.payload.phone;
+            state.email = action.payload.m_credential.email;
+            state.isVerified = action.payload.verified;
+        },
+
+        [UserUpdate.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [UserUpdate.rejected]: (state) => {
+            notification.error({message: 'Please Login'});
+            state.isLoading = false;
+        },
+        [UserUpdate.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.firstName = action.payload.firstName;
             state.lastName = action.payload.lastName;

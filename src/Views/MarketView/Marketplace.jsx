@@ -9,25 +9,31 @@ function Marketplace(){
     const [page, setPage] = useState(1);
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(0);
-    const [search, setSearch] = useState(false);
     const dis = useDispatch();
 
     const handleLevel = (e) => {
         if(!e){
-            return setSearch(false);
+            return 
         }
-        setSearch(true);
         dis(SearchByLevel({page: 1, level: e}));
     };
 
+    const handleSearchName = (e) => {
+        if(!e.target.value){
+            return 
+        }
+        dis(SearchByCollectionName({page,name: e.target.value}));
+    };
+
     const handlePrice = (e) => {
+        if(!e.target.value || !min){
+            return 
+        }
         setMax(parseInt(e.target.value));
-        setSearch(true);
         dis(SearchByPrice({page: 1, min: min, max: max}));
     };
 
     useEffect(() => {
-        setSearch(false);
         dis(getAllHeroes(page)); // eslint-disable-next-line
     }, [page]);
 
@@ -35,7 +41,7 @@ function Marketplace(){
         <Fragment>
             <div className="search">
                 <Input placeholder="Collection Name" className="input-search" 
-                    onChange={(e) => dis(SearchByCollectionName({page,name: e.target.value}))}
+                    onChange={(e) => handleSearchName(e)}
                 />
                 <Select onChange={(e) => handleLevel(e)} options={[
                     {label: 'Level 1', value: 1},
@@ -59,7 +65,7 @@ function Marketplace(){
                         }
                 </section>
             </Spin>
-            <Pagination total={total/10} onChange={(e) => setPage(e)} defaultCurrent={page} className={'pagination'+(search? 'disable-pagination' : '')}/>
+            <Pagination total={total/10} onChange={(e) => setPage(e)} defaultCurrent={page} className={'pagination'} />
         </Fragment>
     )
 };

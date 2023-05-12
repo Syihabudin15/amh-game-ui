@@ -2,9 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Button, Form, Input, Select, Table, notification } from "antd";
 import { DeleteFilled } from '@ant-design/icons';
 import { useDispatch, useSelector } from "react-redux";
-import { getCard } from "../../Reduxs/Actions/CardSlice";
-import axios from "axios";
-import Cookies from "js-cookie";
+import { CreateCard, DeleteCard, getCard } from "../../Reduxs/Actions/CardSlice";
 
 function MyCard(){
     const {data, isLoading} = useSelector(state => state.cards);
@@ -23,29 +21,21 @@ function MyCard(){
             </div>
         )}
     ];
+    
     const onDelete = (data) => {
-        console.log(data);
+        dis(DeleteCard(data));
         dis(getCard());
     };
+
     const handleFinish = async (e) => {
         setLoading(true);
         try{
-            let token = Cookies.get('auth-token');
-            await axios.request({
-                method: 'POST',
-                url: 'https://amh-game-api.up.railway.app/api/user/card',
-                headers: {
-                    accept: 'application/json',
-                    'content-type': 'application/json',
-                    'auth-token': `${token}`
-                },
-                data: {name: e.codeBank, no_card: e.noBank}
-            }).then(res => {
-                dis(getCard());
-            }).catch(err => {
-                notification.error({message: err.message});
-            });
+            if(!e.codeBank || !e.noBank){
+                return setLoading(false);
+            }
+            dis(CreateCard({name: e.codeBank, no_card: e.noBank}));
             setLoading(false);
+            dis(getCard());
         }catch{
             notification.error({message: 'Server Error. please try again later'});
             setLoading(false);
