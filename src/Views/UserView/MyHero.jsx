@@ -18,6 +18,9 @@ function MyHero(){
                 <Menu mode="horizontal" items={items} selectedKeys={curr} onClick={(e) => handleClick(e)} 
                     style={{padding: '0 10px', borderRadius: 20}} />
             </div>
+            <section title="list my hero" className="list-hero-wrap">
+                <p>p</p>
+            </section>
         </Fragment>
     )
 };

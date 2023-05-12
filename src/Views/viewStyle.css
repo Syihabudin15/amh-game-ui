@@ -34,7 +34,7 @@
 }
 .list-hero-wrap{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-evenly; 
     margin-top: 50px;
     flex-wrap: wrap;
 }

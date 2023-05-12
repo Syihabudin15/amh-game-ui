@@ -14,7 +14,7 @@ function CollectionCard({total, data}){
         <Fragment>
             <div className="collection-card-wrapper">
                 <div className="img-collection-wrap">
-                    <Image src={`https://amh-game-api.up.railway.app/img/${data.img}`} alt={data.name} className="img-collection"/>
+                    <Image src={`https://amh-game-api.up.railway.app/img/${data.img}`} alt={data.name} width={'100%'}/>
                 </div>
                 <div className="title-collection">
                     <h4 style={{textAlign: 'center', fontStyle: 'italic'}}>{data.name}</h4>

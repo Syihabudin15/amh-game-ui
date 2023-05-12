@@ -30,10 +30,10 @@ function MarketHero(){
                 {name}
             </h2>
             <Spin spinning={loading}>
-                <section title="list hero marketplace">
+                <section title="list hero marketplace" className="list-hero-wrap">
                     {total === 0 ? <p style={{opacity: '.4', fontWeight: 'bold', fontStyle: 'italic', textAlign: 'center'}}>Not Found</p> : 
                         heroes.map((e,i) => (
-                            <div className="list-hero-wrap" key={i}>
+                            <div key={i}>
                                 <HeroCard data={e}/>
                             </div>
                         ))
