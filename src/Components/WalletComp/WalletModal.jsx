@@ -2,6 +2,7 @@ import { Button, Form, Input, Modal, Select, notification } from "antd";
 import { Fragment, useState } from "react"
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 
 export function SendBalance(){
@@ -67,9 +68,32 @@ export function Deposit(){
     const [pm, setPm] = useState();
     const [amount, setAmount] = useState();
     const [open, setOpen] = useState(false);
+    const nav = useNavigate();
 
-    const createDeposit = () => {
-        console.log({pm, amount});
+    const createDeposit = async() => {
+        if(!pm || !amount) return;
+        try{
+            let token = Cookies.get('auth-token');
+            let result = await axios.request({
+                method: 'POST',
+                url: `https://amh-game-api.up.railway.app/api/user/deposit/ewallet`,
+                headers: {
+                    accept: 'application/json',
+                    'content-type': 'application/json',
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+                    'auth-token': `${token}`
+                },
+                data: {amount: amount, codeBank: pm}
+            });
+            console.log(result);
+            alert('success');
+            setOpen(false);
+            nav(result.data.data.actions[0].url);
+        }catch(err){
+            console.log(err);
+            // notification.error({message: err.response.data.msg});
+        }
     };
 
     return(

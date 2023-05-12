@@ -1,8 +1,12 @@
-import { Fragment, useState } from "react";
-import { Menu } from "antd";
+import { Fragment, useEffect, useState } from "react";
+import { Menu, Spin } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllMyHero } from '../../Reduxs/Actions/MyHeroSlice';
 
 function MyHero(){
     const [curr, setCurr] = useState();
+    const {isLoading, myHeroes} = useSelector(state => state.myHero);
+    const dis = useDispatch();
     const items = [
         {label: 'In Listing', key: 'in-listing'}, 
         {label: 'History', key: 'history'},
@@ -11,6 +15,9 @@ function MyHero(){
     const handleClick = (e) => {
         setCurr(e.key);
     };
+    useEffect(() => {
+        dis(getAllMyHero());
+    },[dis]);
 
     return(
         <Fragment>
@@ -18,9 +25,19 @@ function MyHero(){
                 <Menu mode="horizontal" items={items} selectedKeys={curr} onClick={(e) => handleClick(e)} 
                     style={{padding: '0 10px', borderRadius: 20}} />
             </div>
-            <section title="list my hero" className="list-hero-wrap">
-                <p>p</p>
-            </section>
+            <Spin spinning={isLoading}>
+                <section title="list my hero" className="list-hero-wrap">
+                    {
+                        myHeroes.map((e,i) => (
+                            <div key={i}>
+                                <p>{e.my_point}</p>
+                                <p>{e.max_point}</p>
+                                <p>{e.m_heros.level}</p>
+                            </div>
+                        ))
+                    }
+                </section>
+            </Spin>
         </Fragment>
     )
 };

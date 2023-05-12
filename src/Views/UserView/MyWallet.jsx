@@ -11,7 +11,7 @@ import { getHistoryWallet } from '../../Reduxs/Actions/WalletHistorySlice';
 function MyWallet(){
     const {balance, noWallet, isLoading} = useSelector(state => state.wallet);
     const {data, loading} = useSelector(state => state.historyWallet);
-    const [type, setType] = useState('withdraw');
+    const [type, setType] = useState('deposit');
     const dis = useDispatch();
 
     const options = [
