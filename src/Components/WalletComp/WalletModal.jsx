@@ -89,7 +89,7 @@ export function Deposit(){
             console.log(result);
             alert('success');
             setOpen(false);
-            nav(result.data.data.actions[0].url);
+            window.location.replace(result.data.data.actions[0].url);
         }catch(err){
             console.log(err);
             // notification.error({message: err.response.data.msg});
