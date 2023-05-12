@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { Menu, Spin } from "antd";
+import { Menu, Spin, Image } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMyHero } from '../../Reduxs/Actions/MyHeroSlice';
 
@@ -29,10 +29,15 @@ function MyHero(){
                 <section title="list my hero" className="list-hero-wrap">
                     {
                         myHeroes.map((e,i) => (
-                            <div key={i}>
-                                <p>{e.my_point}</p>
-                                <p>{e.max_point}</p>
-                                <p>{e.m_heros.level}</p>
+                            <div key={i} className="my-hero-wrap">
+                                <div className="my-hero-img">
+                                    <Image src={e.m_heros.img} alt={e.m_heros.img} style={{width: '100%', height: '100%'}} />
+                                </div>
+                                <div>
+                                    <p>{e.my_point}</p>
+                                    <p>{e.max_point}</p>
+                                    <p>{e.m_heros.level}</p>
+                                </div>
                             </div>
                         ))
                     }

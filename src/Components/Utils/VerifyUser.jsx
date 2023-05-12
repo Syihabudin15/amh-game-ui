@@ -14,13 +14,13 @@ function VerifyUser(){
     const token = Cookies.get('auth-token');
 
     const sendOtp = async () => {
-        let count = 20;
+        let count = 60;
         setDisable(false);
         setLoading(true);
 
         try{
             // eslint-disable-next-line
-            let sendEmail = await axios.post({
+            let sendEmail = await axios.request({
                 method: 'POST',
                 url: 'https://amh-game-api.up.railway.app/api/user/req-verify',
                 headers: {
@@ -41,7 +41,7 @@ function VerifyUser(){
             setLoading(false);
         }catch(err){
             setLoading(false);
-            notification.error({message: 'Please Login'});
+            notification.error({message: err.response.data.msg});
         }
     };
 
@@ -49,7 +49,7 @@ function VerifyUser(){
         setLoadConfirm(true);
         try{
             // eslint-disable-next-line
-            let verify = await axios.post({
+            let verify = await axios.request({
                 method: 'POST',
                 url: 'https://amh-game-api.up.railway.app/api/user/verify',
                 headers: {

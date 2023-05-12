@@ -209,6 +209,17 @@
     border: 1px solid #aaa;
     flex-wrap: wrap;
 }
+.my-hero-wrap{
+    border: 1px solid #aaa;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px #aaa;
+    width: 230px;
+    height: 400px;
+}
+.my-hero-img{
+    width: 230px;
+    height: 200px;
+}
 @media only screen and (max-width: 600px) {
     .sign-wrap{
         width: 80vw;
