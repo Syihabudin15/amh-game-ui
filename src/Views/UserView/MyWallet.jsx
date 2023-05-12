@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState} from 'react';
 import { SendBalance, Deposit, Withdraw } from '../../Components/WalletComp/WalletModal';
 import { BankTwoTone } from '@ant-design/icons';
-import { Col, Divider, Select, Spin, Table, Row } from 'antd';
+import { Col, Divider, Select, Spin, Table, Row, Typography } from 'antd';
 import '../viewStyle.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWallet } from '../../Reduxs/Actions/WalletSlice';
@@ -58,7 +58,9 @@ function MyWallet(){
                             <Row>
                                 <Col span={10} className='bold-info'>No Wallet</Col>
                                 <Col span={3}>:</Col>
-                                <Col span={10}>{noWallet}</Col>
+                                <Col span={10} style={{display: 'flex', flexWrap: 'nowrap', paddingTop: 2}}>
+                                    {noWallet} <Typography.Paragraph copyable={{text: noWallet}} style={{paddingTop: 3, paddingLeft: 8}}></Typography.Paragraph>
+                                </Col>
                             </Row>
                         </div>
                         <div className='wallet-transaction'>

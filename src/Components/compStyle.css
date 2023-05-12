@@ -91,8 +91,10 @@
 .collection-card-wrapper{
     width: 250px;
     height: 280px;
-    border: 1px solid black;
+    background-color: #fff;
+    border: 1px solid #aaa;
     border-radius: 10px 10px 0 0;
+    box-shadow: 3px 3px 10px #aaa;
 }
 .img-collection-wrap img{
     max-height: 170px;

@@ -1,5 +1,7 @@
-import { Button, Form, Input, Modal, Select } from "antd";
+import { Button, Form, Input, Modal, Select, notification } from "antd";
 import { Fragment, useState } from "react"
+import axios from "axios";
+import Cookies from "js-cookie";
 
 
 export function SendBalance(){
@@ -9,10 +11,34 @@ export function SendBalance(){
     const [loading, setLoading] = useState(false);
     const [disable, setDisable] = useState(false);
 
-    const sendBalance = () => {
-        console.log({to, amount});
+    const sendBalance = async () => {
+        if(!amount || !to){
+            return
+        }
         setLoading(true);
         setDisable(true);
+        try{
+            let token = Cookies.get('auth-token');
+            // eslint-disable-next-line
+            let result = await axios.request({
+                method: 'POST',
+                url: `https://amh-game-api.up.railway.app/api/user/wallet/send`,
+                headers: {
+                    accept: 'application/json',
+                    'content-type': 'application/json',
+                    'auth-token': `${token}`
+                },
+                data: {wallet_target: to, amount: amount}
+            }); 
+            notification.success({message: 'Success send, Youre Balance was changed'});
+            window.location.reload();
+            
+        }catch(err){
+            notification.error({message: err.response.data.msg});
+        }
+        setLoading(false);
+        setDisable(false);
+        setOpen(false);
     };
 
     return(

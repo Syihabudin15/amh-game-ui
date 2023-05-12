@@ -54,6 +54,7 @@ function MenuWrapper(){
             setItems([
                 {label: 'About Us', key: '/about'},
                 {label: 'Blog', key: '/blog'},
+                {label: 'Market', key: '/market'},
                 {key: '#auth-menu', icon: <UserOutlined style={{
                         color: 'blue', border: '1px solid blue', padding: 5, borderRadius: 50
                     }}/>,  

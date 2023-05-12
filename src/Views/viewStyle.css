@@ -37,6 +37,14 @@
     justify-content: space-evenly; 
     margin-top: 50px;
     flex-wrap: wrap;
+    gap: 10;
+}
+.hero-card{
+    box-shadow: 2px 3px 5px #aaa;
+}
+.hero-card:hover{
+    transition: 500ms;
+    transform: scale(1.1);
 }
 .pagination{
     text-align: center;

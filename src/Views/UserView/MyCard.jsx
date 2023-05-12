@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { Button, Form, Input, Select, Table, notification } from "antd";
+import { Button, Form, Input, Select, Table } from "antd";
 import { DeleteFilled } from '@ant-design/icons';
 import { useDispatch, useSelector } from "react-redux";
 import { CreateCard, DeleteCard, getCard } from "../../Reduxs/Actions/CardSlice";
@@ -22,24 +22,19 @@ function MyCard(){
         )}
     ];
     
-    const onDelete = (data) => {
-        dis(DeleteCard(data));
+    const onDelete = async (data) => {
+        await dis(DeleteCard(data));
         dis(getCard());
     };
 
     const handleFinish = async (e) => {
         setLoading(true);
-        try{
-            if(!e.codeBank || !e.noBank){
-                return setLoading(false);
-            }
-            dis(CreateCard({name: e.codeBank, no_card: e.noBank}));
-            setLoading(false);
-            dis(getCard());
-        }catch{
-            notification.error({message: 'Server Error. please try again later'});
-            setLoading(false);
+        if(!e.codeBank || !e.noBank){
+            return setLoading(false);
         }
+        await dis(CreateCard({name: e.codeBank, no_card: e.noBank}));
+        dis(getCard());
+        setLoading(false);
     };
 
     useEffect(() => {
