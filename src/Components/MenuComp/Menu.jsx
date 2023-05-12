@@ -73,7 +73,7 @@ function MenuWrapper(){
                 <Col>
                     <LeftMenu/>
                 </Col>
-                <Col span={isLogin ? 12 : 5} className="menu-window">
+                <Col span={isLogin ? 12 : 6} className="menu-window">
                     <Menu items={items} mode="horizontal" selectedKeys={current} style={{backgroundColor: '#fff'}} onClick={(e) => handleClick(e)} />
                 </Col>
                 <Col className="menu-mobile">
