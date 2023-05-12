@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState} from 'react';
 import { SendBalance, Deposit, Withdraw } from '../../Components/WalletComp/WalletModal';
 import { BankTwoTone } from '@ant-design/icons';
-import { Col, Divider, Pagination, Select, Spin, Table, Row } from 'antd';
+import { Col, Divider, Select, Spin, Table, Row } from 'antd';
 import '../viewStyle.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWallet } from '../../Reduxs/Actions/WalletSlice';
@@ -11,12 +11,12 @@ import { getHistoryWallet } from '../../Reduxs/Actions/WalletHistorySlice';
 function MyWallet(){
     const {balance, noWallet, isLoading} = useSelector(state => state.wallet);
     const {data, loading} = useSelector(state => state.historyWallet);
-    const [dataS, setDataS] = useState(data);
+    const [type, setType] = useState('withdraw');
     const dis = useDispatch();
 
     const options = [
-        // {label: 'Send', value: 'send'},
-        // {label: 'Receive', value: 'receive'},
+        {label: 'Send', value: 'send'},
+        {label: 'Receive', value: 'receive'},
         {label: 'Withdraw', value: 'withdraw'},
         {label: 'Deposit', value: 'deposit'}
     ];
@@ -33,14 +33,13 @@ function MyWallet(){
         if(!e){
             return 
         }
-        dis(getHistoryWallet(e));
-        setDataS(data);
+        setType(e)
     };
 
     useEffect(() => {
         dis(getWallet());
-        dis(getHistoryWallet('withdraw'));
-    }, [dis]);
+        dis(getHistoryWallet(type));
+    }, [dis, type]);
 
     return(
         <Fragment>
@@ -81,10 +80,9 @@ function MyWallet(){
                         </div>
                         <div>
                             <Spin spinning={loading}>
-                                <Table columns={columns} dataSource={dataS}  style={{margin: 20, overflowY: 'auto'}}/>
+                                <Table columns={columns} dataSource={data}  style={{margin: 20, overflowY: 'auto'}} pagination/>
                             </Spin>
                         </div>
-                        <Pagination total={10} className='pagination' />
                     </section>
                 </section>
             </Spin>
