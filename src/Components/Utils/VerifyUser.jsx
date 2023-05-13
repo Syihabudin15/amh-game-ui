@@ -80,7 +80,7 @@ function VerifyUser(){
                         <Input placeholder="OTP Code" onChange={(e) => setOtpCode(e.target.value)} />
                         <i style={{fontSize: '.8em', color: 'red'}}>{feed ? feed : ''}</i>
                     </Col>
-                    <Col style={{marginLeft: 20}}>
+                    <Col style={{marginLeft: 13}}>
                         <Button loading={loading} onClick={() => sendOtp()} >{loading ?  currTime : 'Send OTP'}</Button>
                     </Col>
                 </Row>

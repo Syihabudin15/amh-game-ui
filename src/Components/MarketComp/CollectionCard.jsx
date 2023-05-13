@@ -30,17 +30,17 @@ function CollectionCard({total, data}){
                 <Button type="primary" onClick={() => nav(`/market/collection/${data.id}`)}>See Hero List</Button>
             ]}>
                 <Row>
-                    <Col span={5}>Name</Col>
+                    <Col span={7}>Name</Col>
                     <Col span={3}>:</Col>
                     <Col span={10}>{data.name}</Col>
                 </Row>
                 <Row>
-                    <Col span={5}>Heroes</Col>
+                    <Col span={7}>Heroes</Col>
                     <Col span={3}>:</Col>
                     <Col span={10}>{total}</Col>
                 </Row>
                 <Row>
-                    <Col span={5}>Description</Col>
+                    <Col span={7}>Description</Col>
                     <Col span={3}>:</Col>
                 </Row>
                 <Row>
