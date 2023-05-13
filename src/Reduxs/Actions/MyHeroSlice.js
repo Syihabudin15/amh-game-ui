@@ -3,11 +3,11 @@ import { notification } from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const getAllMyHero = createAsyncThunk('/my-heroes/get', async () => {
+export const getAllMyHero = createAsyncThunk('/my-heroes/get', async ({type, page}) => {
     let token = Cookies.get('auth-token');
     let result = await axios.request({
         method: 'GET',
-        url: 'https://amh-game-api.up.railway.app/api/user/my-hero',
+        url: `https://amh-game-api.up.railway.app/api/user/my-hero/${type}?page=${page}`,
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',
@@ -21,6 +21,7 @@ const MyHeroSlice = createSlice({
     name: 'MyHeroSlice',
     initialState: {
         isLoading: false,
+        total: 0,
         myHeroes: []
     },
     extraReducers: {
@@ -33,7 +34,9 @@ const MyHeroSlice = createSlice({
         },
         [getAllMyHero.fulfilled]: (state, action) => {
             state.isLoading = false;
-            state.myHeroes = action.payload;
+            state.total = action.payload.count;
+            state.myHeroes = action.payload.rows;
+            console.log(action.payload);
         }
     }
 });

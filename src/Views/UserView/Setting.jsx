@@ -23,18 +23,18 @@ function Setting(){
         setShow(false);
     };
 
-    const handleFinish = () => {
+    const handleFinish = async () => {
         if(!first || !last){
             return notification.error({message: 'Firstname and Lastname is required'});
         }
         try{
-            dis(UserUpdate({firstName: first, lastName: last}));
+            await dis(UserUpdate({firstName: first, lastName: last}));
             notification.success({message: 'Update Success'});
-            setDisable(true);
-            setShow(false);
         }catch(err){
             notification.error({message: err.message});
         }
+        setDisable(true);
+        setShow(false);
     };
 
     useEffect(() => {

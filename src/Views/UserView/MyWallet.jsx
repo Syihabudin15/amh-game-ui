@@ -22,11 +22,15 @@ function MyWallet(){
     ];
 
     const columns = [
-        {title: 'Date', dataIndex: 'date'},
+        {title: 'Date', dataIndex: 'date', render: (e) => (
+            <p>{new Date(e).toDateString()}</p>
+        )},
         {title: 'Amount', dataIndex: 'amount'},
         {title: 'To', dataIndex: 'to'},
         {title: 'Type', dataIndex: 'type'},
-        {title: 'Status', dataIndex: 'status'}
+        {title: 'Status', dataIndex: 'status', render: (e) => (
+            e === 'SUCCEEDED' ? <p style={{color: 'green', fontWeight: 'bold'}}>{e}</p> : <p style={{color: 'blue', fontWeight: 'bold'}}>{e}</p>
+        )}
     ];
 
     const handleFilter = (e) => {

@@ -2,7 +2,6 @@ import { Button, Form, Input, Modal, Select, notification } from "antd";
 import { Fragment, useState } from "react"
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
 
 
 export function SendBalance(){
@@ -68,7 +67,6 @@ export function Deposit(){
     const [pm, setPm] = useState();
     const [amount, setAmount] = useState();
     const [open, setOpen] = useState(false);
-    const nav = useNavigate();
 
     const createDeposit = async() => {
         if(!pm || !amount) return;
@@ -122,7 +120,7 @@ export function Withdraw(){
     const [open, setOpen] = useState(false);
     return(
         <Fragment>
-            <Button onClick={() => setOpen(true)} type="primary" >Withdraw</Button>
+            <Button onClick={() => setOpen(true)} type="primary" disabled={true} >Withdraw</Button>
             <Modal title='Withdraw' open={open} onCancel={() => setOpen(false)}>
                 <Form>
                     <Form.Item label='Amount'>
