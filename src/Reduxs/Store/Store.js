@@ -7,6 +7,7 @@ import CardSlice from "../Actions/CardSlice";
 import CollectionSlice from "../Actions/CollectionSlice";
 import HeroesSlice from "../Actions/HeroesSlice";
 import MyHeroSlice from "../Actions/MyHeroSlice";
+import HistoryMyHeroSlice from "../Actions/HistoryMyHeroSlice";
 
 export default configureStore({
     reducer: {
@@ -17,6 +18,7 @@ export default configureStore({
         cards: CardSlice,
         collections: CollectionSlice,
         heroes: HeroesSlice,
-        myHero: MyHeroSlice
+        myHero: MyHeroSlice,
+        historyMyHero: HistoryMyHeroSlice
     }
 });

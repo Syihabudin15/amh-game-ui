@@ -77,7 +77,7 @@ function Setting(){
                 <div style={{
                     display: 'flex', justifyContent: 'center', gap: 70, marginTop: 50, alignItems: 'center'
                 }}>
-                    {verified ? null : <VerifyUser/>}
+                    {verified ? '' : <VerifyUser/>}
                     <Link >
                         <i>Change Password</i>
                     </Link>

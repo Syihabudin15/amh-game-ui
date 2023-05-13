@@ -32,13 +32,12 @@ export function SendBalance(){
             }); 
             notification.success({message: 'Success send, Youre Balance was changed'});
             window.location.reload();
-            
+            setLoading(false);
+            setDisable(false);
+            setOpen(false);
         }catch(err){
             notification.error({message: err.response.data.msg});
         }
-        setLoading(false);
-        setDisable(false);
-        setOpen(false);
     };
 
     return(
