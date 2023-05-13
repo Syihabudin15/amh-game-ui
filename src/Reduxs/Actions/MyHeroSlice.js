@@ -36,7 +36,6 @@ const MyHeroSlice = createSlice({
             state.isLoading = false;
             state.total = action.payload.count;
             state.myHeroes = action.payload.rows;
-            console.log(action.payload);
         }
     }
 });

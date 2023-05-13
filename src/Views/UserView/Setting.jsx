@@ -11,7 +11,7 @@ function Setting(){
     const [show, setShow] = useState(false);
     const [first, setFirst] = useState();
     const [last, setLast] = useState();
-    const {verified, firstName, lastName, phone, email, isLoading} = useSelector(state => state.user);
+    const {isVerified, firstName, lastName, phone, email, isLoading} = useSelector(state => state.user);
     const dis = useDispatch();
 
     const handleEdit = () => {
@@ -77,15 +77,15 @@ function Setting(){
                 <div style={{
                     display: 'flex', justifyContent: 'center', gap: 70, marginTop: 50, alignItems: 'center'
                 }}>
-                    {verified ? '' : <VerifyUser/>}
+                    {isVerified ? '' : <VerifyUser/>}
                     <Link >
                         <i>Change Password</i>
                     </Link>
                 </div>
                 <div className="setting-button">
-                    <Button className={show ? 'not-show' : null} onClick={() => handleEdit()}>Edit</Button>
+                    <Button className={show ? 'not-show' : null} type="primary" onClick={() => handleEdit()}>Edit</Button>
                     <Button className={show ? null : 'not-show'} onClick={() => handleCancel()}>Cancel</Button>
-                    <Button className={show ? null : 'not-show'} onClick={() => handleFinish()}>Confirm</Button>
+                    <Button className={show ? null : 'not-show'} type="primary" onClick={() => handleFinish()}>Confirm</Button>
                 </div>
             </section>
         </Fragment>

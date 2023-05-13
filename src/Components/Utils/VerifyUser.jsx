@@ -73,10 +73,10 @@ function VerifyUser(){
         <Fragment>
             <Button onClick={() => setModal(true)}><i>Verify Account</i></Button>
             <Modal open={modal} title="Verification" onCancel={() => setModal(false)} footer={[
-                <Button disabled={disable} onClick={() => verifyOtp()} loading={loadingConfirm}>Confirm</Button>
+                <Button disabled={disable} type="primary" onClick={() => verifyOtp()} loading={loadingConfirm}>Confirm</Button>
             ]}>
                 <Row>
-                    <Col>
+                    <Col span={10}>
                         <Input placeholder="OTP Code" onChange={(e) => setOtpCode(e.target.value)} />
                         <i style={{fontSize: '.8em', color: 'red'}}>{feed ? feed : ''}</i>
                     </Col>

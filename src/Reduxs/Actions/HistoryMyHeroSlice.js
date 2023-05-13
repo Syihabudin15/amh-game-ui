@@ -22,7 +22,9 @@ export const getAllMyHeroHistory = createAsyncThunk('/my-heroes/history', async 
 const HistoryMyHeroSlice = createSlice({
     name: 'HistoryMyHeroSlice',
     initialState:{
-        isLoading: false
+        isLoading: false,
+        total: 0,
+        data: []
     },
     extraReducers: {
         [getAllMyHeroHistory.pending]: (state) => {
@@ -34,7 +36,18 @@ const HistoryMyHeroSlice = createSlice({
         },
         [getAllMyHeroHistory.fulfilled]: (state, action) => {
             state.isLoading = false;
-            console.log(action.payload);
+            state.total = action.payload.count;
+
+            let dataHistory = [];
+            for(let i = 0; i < action.payload.rows; i++){
+                dataHistory.push({
+                    date: action.payload.rows[i].createdAt,
+                    from: action.payload.rows[i].t_hero_transaction.mUserId,
+                    receiver: action.payload.rows[i].t_hero_transaction.receiver,
+                    type: action.payload.rows[i].t_hero_transaction.type
+                });
+            }
+            state.data = dataHistory;
         }
     }
 });

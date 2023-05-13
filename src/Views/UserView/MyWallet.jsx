@@ -27,7 +27,7 @@ function MyWallet(){
         )},
         {title: 'Amount', dataIndex: 'amount'},
         {title: 'To', dataIndex: 'to'},
-        {title: 'Type', dataIndex: 'type'},
+        {title: 'Type', dataIndex: 'type', render: (type) => (<p>{type.toUpperCase()}</p>)},
         {title: 'Status', dataIndex: 'status', render: (e) => (
             e === 'SUCCEEDED' ? <p style={{color: 'green', fontWeight: 'bold'}}>{e}</p> : <p style={{color: 'blue', fontWeight: 'bold'}}>{e}</p>
         )}
