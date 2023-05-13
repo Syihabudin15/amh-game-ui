@@ -34,9 +34,9 @@ function MyHero(){
                             <div key={i} className="my-hero-wrap">
                                 <div className="my-hero-img">
                                     <Image src={`https://amh-game-api.up.railway.app/img/${e.m_hero.img}`}
-                                        alt={e.m_hero.img} style={{width: '100%', height: '100%'}} />
+                                        alt={e.m_hero.img} width={'100%'} height={'100%'} />
                                 </div>
-                                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 10}}>
+                                <div className="my-herodetail-wrap">
                                     <MyHeroDetail data={e} />
                                 </div>
                             </div>

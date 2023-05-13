@@ -37,17 +37,7 @@ const HistoryMyHeroSlice = createSlice({
         [getAllMyHeroHistory.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.total = action.payload.count;
-
-            let dataHistory = [];
-            for(let i = 0; i < action.payload.rows; i++){
-                dataHistory.push({
-                    date: action.payload.rows[i].createdAt,
-                    from: action.payload.rows[i].t_hero_transaction.mUserId,
-                    receiver: action.payload.rows[i].t_hero_transaction.receiver,
-                    type: action.payload.rows[i].t_hero_transaction.type
-                });
-            }
-            state.data = dataHistory;
+            state.data = action.payload.rows;
         }
     }
 });

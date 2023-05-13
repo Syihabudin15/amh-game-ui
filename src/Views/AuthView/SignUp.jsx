@@ -16,8 +16,13 @@ function SignUp(){
             // eslint-disable-next-line
             let result = await axios.post('https://amh-game-api.up.railway.app/api/sign-up', {email: e.email, phone: e.phone, password: e.password});
             notification.success({message: 'Register Success'});
-        }catch{
-            notification.error({message: 'We have an error, try again later'});
+            nav('/sign-in');
+        }catch(err){
+            if(err.response.data.statusCode === 500){
+                notification.error({message: "Email or Phone alredy registered"});
+            }else{
+                notification.error({message: err.response.data.msg});
+            }
         }finally{
             setSpin(false);
         }

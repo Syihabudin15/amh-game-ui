@@ -213,13 +213,16 @@
     border: 1px solid #aaa;
     background-color: #fff;
     box-shadow: 2px 2px 5px #aaa;
-    width: 230px;
-    height: 250px;
+    width: 200px;
+    height: 220px;
 }
 .my-hero-img{
-    width: 230px;
-    height: 200px;
+    width: 100%;
+    height: 75%;
     border: 1px solid #aaa;
+}
+.my-herodetail-wrap{
+    margin: 10px;
 }
 @media only screen and (max-width: 600px) {
     .sign-wrap{
@@ -294,5 +297,12 @@
     }
     .main-top-img{
         display: none;
+    }
+    .my-hero-wrap{   
+        width: 140px;
+        height: 150px;
+    }
+    .my-herodetail-wrap{
+        margin: 2px;
     }
 }

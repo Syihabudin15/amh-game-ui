@@ -31,7 +31,7 @@ export function MyHeroDetail({data}){
                 <Row>
                     <Col span={8}>Collection</Col> 
                     <Col span={3}>:</Col> 
-                    <Col style={{fontWeight: 'bolder', fontStyle: 'italic'}}>Anya Collection</Col>
+                    <Col style={{fontWeight: 'bolder', fontStyle: 'italic'}}>{data.m_hero.m_collection.name}</Col>
                 </Row>
             </Modal>
         </Fragment>

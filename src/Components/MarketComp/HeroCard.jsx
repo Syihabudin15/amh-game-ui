@@ -42,6 +42,10 @@ function HeroCard({data}){
                     </Row>
 
                     <Row>
+                        <Col span={8}>Power</Col> <Col span={3}>:</Col> <Col span={13}>{data.power}</Col>
+                    </Row>
+
+                    <Row>
                         <Col span={8}>Collection</Col> <Col span={3}>:</Col> <Col span={13} style={{fontWeight: 'bolder', fontStyle: 'italic'}}>{data.m_collection.name}</Col>
                     </Row>
                 </div>
