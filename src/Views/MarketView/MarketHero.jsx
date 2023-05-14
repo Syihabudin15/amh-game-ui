@@ -18,7 +18,7 @@ function MarketHero(){
     }, [dis, page, id]);
     return(
         <Fragment>
-            <div style={{margin: '10px 0 0 10px', position: 'fixed'}}>
+            <div style={{margin: '10px 0 0 10px', position: 'fixed', zIndex: 9999}}>
                 <Link to='/market'>
                     <LeftCircleFilled style={{margin: '0 10px'}}/>
                     <i style={{fontWeight: 'bold', textShadow: '4px 4px 4px #aaa'}}>Back</i>

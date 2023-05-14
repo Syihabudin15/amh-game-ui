@@ -45,7 +45,7 @@ function Setting(){
 
     return(
         <Fragment>
-            <div style={{margin: 10, position: 'fixed'}}>
+            <div style={{margin: 10, position: 'fixed', zIndex: 999}}>
                 <Link to='/user/dashboard'>
                     <LeftCircleFilled style={{margin: '0 10px'}}/>
                     <i style={{fontWeight: 'bold', textShadow: '4px 4px 4px #aaa'}}>Dashboard</i>

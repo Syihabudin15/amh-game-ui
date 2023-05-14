@@ -1,28 +1,29 @@
-import { Button } from "antd";
+import { Button, Form, Input } from "antd";
+import { ArrowRightOutlined } from '@ant-design/icons';
 
 function Main(){
     return(
         <section title="main website">
             <div className="main-top">
                 <div className="main-top-desc">
-                    <h3 style={{fontSize: '2em', textAlign: 'center'}}>AMH GAME</h3>
+                    <h3 style={{fontSize: '3em', textAlign: 'center', textShadow: '2px 3px #aaa'}}>AMH GAME</h3>
                     <div>
-                        <p>Fun And Earn with AMH GAME</p>
+                        <p style={{fontWeight: 'bold', fontStyle: 'italic', fontSize: '1.1em'}}>Fun And Earn with AMH GAME</p>
                     </div>
                     <div>
-                        <p>Description Of the Platform. and any Text for Marketing.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                        <p>AMH GAME is a Play to Earn Platform in Indonesia Nation</p>
+                        <p>You can make money by Playing the game in the Platform</p>
+                        <p>We have 10+ Games for User Playing</p>
                     </div>
                     <div style={{marginTop: 30}}>
-                        <p>Sign up now for Get Free Hero from AMH Drawing</p>
+                        <p style={{fontWeight: 'bold', fontSize: '1.1em', color: 'green', textAlign: 'center'}}>Sign up now for Get Free Hero </p>
                     </div>
-                    <div style={{display: 'flex', justifyContent: 'center', margin: '20px auto'}}>
+                    <div style={{display: 'flex', justifyContent: 'center', margin: '20px auto', gap: 10}}>
+                    <ArrowRightOutlined />
                         <Button style={{backgroundColor: 'red', color: 'white', fontWeight: 'bold'}}>Start Playing</Button>
                     </div>
                 </div>
                 <div className="main-top-img">
-                    This is Section for Image
                 </div>
             </div>
             <div className="main-feature">
@@ -48,8 +49,22 @@ function Main(){
                 </div>
             </div>
             <div className="main-footer">
-                <div className="google-form">
-                    <p>Google Form Contact</p>
+                <div className="google-form" style={{backgroundColor: '#fff', padding: 30}}>
+                    <h4 style={{textAlign: 'center'}}>Report Bug</h4>
+                    <Form labelCol={{span: 7}}>
+                        <Form.Item label='Email'>
+                            <Input />
+                        </Form.Item>
+                        <Form.Item label='Name'>
+                            <Input />
+                        </Form.Item>
+                        <Form.Item label='Feedback'>
+                            <Input.TextArea style={{height: 100}} />
+                        </Form.Item>
+                        <Form.Item style={{display: 'flex', justifyContent: 'center', marginTop: 50}}>
+                            <Button disabled={true}>Send</Button>
+                        </Form.Item>
+                    </Form>
                 </div>
                 <div>
                     <p>list link</p>

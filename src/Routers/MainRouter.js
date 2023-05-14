@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Main from '../Views/MainView/Main';
 import UserRouter from './UserRouter';
 import { Fragment } from "react";
@@ -16,6 +16,7 @@ function MainRouter(){
                 <Route path="/market/collection/:id" element={<MarketHero/>} />
                 <Route path="/game/*" element={<GameRouter/>} />
                 <Route path="/" element={<Main/>} />
+                <Route path="*" element={<Navigate to={'/'} />} />
             </Routes>
             <Footer />
         </Fragment>
