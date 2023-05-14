@@ -66,9 +66,11 @@ export function Deposit(){
     const [pm, setPm] = useState();
     const [amount, setAmount] = useState();
     const [open, setOpen] = useState(false);
+    const [load, setLoad] = useState(false);
 
     const createDeposit = async() => {
         if(!pm || !amount) return;
+        setLoad(true);
         try{
             let token = Cookies.get('auth-token');
             let result = await axios.request({
@@ -84,8 +86,9 @@ export function Deposit(){
                 data: {amount: amount, codeBank: pm}
             });
             console.log(result);
-            alert('success');
+            notification.success({message: 'please wait you will be redirecting'});
             setOpen(false);
+            setLoad(false);
             window.location.replace(result.data.data.actions[0].url);
         }catch(err){
             console.log(err);
@@ -98,7 +101,7 @@ export function Deposit(){
             <Button onClick={() => setOpen(true)} type="primary" >Deposit</Button>
             <Modal open={open} onCancel={() => setOpen(false)} title="Deposit"
                 footer={[
-                    <Button onClick={() => createDeposit()}>Confirm</Button>
+                    <Button onClick={() => createDeposit()} loading={load}>Confirm</Button>
                 ]}
             >
                 <Form>

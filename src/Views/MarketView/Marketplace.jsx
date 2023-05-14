@@ -1,55 +1,65 @@
 import { Fragment, useEffect, useState } from "react";
 import { Divider, Input, Pagination, Select, Spin } from "antd";
-import HeroCard from "../../Components/MarketComp/HeroCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHeroes, SearchByLevel, SearchByPrice, SearchByCollectionName } from "../../Reduxs/Actions/HeroesSlice";
+import HeroCardMarketPlace from "../../Components/MarketComp/HeroCardMarketplace";
 
 function Marketplace(){
     const {heroes, loading, total} = useSelector(state => state.heroes);
     const [page, setPage] = useState(1);
-    const [min, setMin] = useState(0);
-    const [max, setMax] = useState(0);
+    const [min, setMin] = useState();
+    const [max, setMax] = useState();
+    const [name, setName] = useState();
+    const [level, setLevel] = useState();
     const dis = useDispatch();
 
-    const handleLevel = (e) => {
-        if(!e){
-            return 
-        }
-        dis(SearchByLevel({page: 1, level: e}));
-    };
+    // const handleSearchName = async (e) => {
+    //     if(!e.target.value){
+    //         return 
+    //     }
+    //     await dis(SearchByCollectionName({page,name: e.target.value}));
+    // };
+    
+    // const handleLevel = async (e) => {
+    //     if(!e) return;
+    //     await dis(SearchByLevel({page,level: e}));
+    // }
 
-    const handleSearchName = (e) => {
-        if(!e.target.value){
-            return 
-        }
-        dis(SearchByCollectionName({page,name: e.target.value}));
-    };
-
-    const handlePrice = (e) => {
-        if(!e.target.value || !min){
-            return 
-        }
-        setMax(parseInt(e.target.value));
-        dis(SearchByPrice({page: 1, min: min, max: max}));
-    };
+    // const handlePrice = async (e) => {
+    //     if(!e.target.value || !min){
+    //         return 
+    //     }
+    //     await dis(SearchByPrice({page, min: min, max: parseInt(e.target.value)}));
+    // };
 
     useEffect(() => {
-        dis(getAllHeroes(page)); // eslint-disable-next-line
-    }, [page]);
-
+        if(max || min ){
+            dis(SearchByPrice({page, min, max}));
+        }
+        else if(name){
+            dis(SearchByCollectionName({page, name}));
+        }
+        else if(level){
+            dis(SearchByLevel({page, level}));
+        }
+        else{
+            dis(getAllHeroes(page)); // eslint-disable-next-line
+        }
+    }, [page, min, max, level, name, dis]);
+    
     return(
         <Fragment>
             <div className="search">
                 <Input placeholder="Collection Name" className="input-search" 
-                    onChange={(e) => handleSearchName(e)}
+                    onChange={(e) => setName(e.target.value)}
                 />
-                <Select onChange={(e) => handleLevel(e)} options={[
+                <Select onChange={(e) => setLevel(e)} options={[
                     {label: 'Level 1', value: 1},
                     {label: 'Level 2', value: 2}
                 ]} placeholder='Level' allowClear style={{padding: 5}} />
                 <div className="price-range">
-                    <Input placeholder="price" onChange={(e) => setMin(parseInt(e.target.value))} />
-                    <Input placeholder="range" onChange={(e) => handlePrice(e)} />
+                    <Input placeholder="price" onChange={(e) => setMin(e.target.value)} />
+                    <Input placeholder="range" onChange={(e) => setMax(e.target.value)} />
                 </div>
             </div>
             <Divider/>
@@ -59,7 +69,7 @@ function Marketplace(){
                             total === 0 ? <p style={{opacity: '.4', fontWeight: 'bold', fontStyle: 'italic', textAlign: 'center'}}>Not Found</p> : 
                             heroes.map((e,i) => (
                                 <div key={i}>
-                                    <HeroCard data={e} />
+                                    <HeroCardMarketPlace data={e} />
                                 </div>
                             ))
                         }

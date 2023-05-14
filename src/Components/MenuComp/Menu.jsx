@@ -65,7 +65,7 @@ function MenuWrapper(){
                 }
             ]);
         }
-    }, [isLogin, dis]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [user, isLogin, dis]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return(
         <section title="menu section">

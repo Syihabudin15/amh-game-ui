@@ -2,14 +2,13 @@ import { Fragment, useState } from "react";
 import { Button, Col, Image, Modal, Row} from "antd";
 import { useNavigate } from "react-router-dom";
 
-function CollectionCard({total, data}){
+function CollectionCard({data}){
     const [modalOpen, settModalOpen] = useState(false);
     const nav = useNavigate();
 
     const seeDetail = () => {
         settModalOpen(true);
     };
-
     return(
         <Fragment>
             <div className="collection-card-wrapper">
@@ -37,7 +36,7 @@ function CollectionCard({total, data}){
                 <Row>
                     <Col span={7}>Heroes</Col>
                     <Col span={3}>:</Col>
-                    <Col span={10}>{total}</Col>
+                    <Col span={10}>{data.m_heros.length}</Col>
                 </Row>
                 <Row>
                     <Col span={7}>Description</Col>

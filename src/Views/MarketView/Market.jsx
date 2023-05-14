@@ -24,7 +24,7 @@ function Market(){
                     {total === 0 ? <p style={{opacity: '.4', fontWeight: 'bold', fontStyle: 'italic', textAlign: 'center'}}>Not Found</p> : 
                         collections.map((e,i) => (
                             <div className="list-hero-wrap" key={i}>
-                                <CollectionCard total={total} data={e}/>
+                                <CollectionCard data={e}/>
                             </div>
                         ))
                     }
