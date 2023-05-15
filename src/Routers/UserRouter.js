@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Dashboard from '../Views/MainView/Dashboard';
 import Marketplace from '../Views/MarketView/Marketplace';
 import MyHero from '../Views/UserView/MyHero';
@@ -28,6 +28,7 @@ function UserRouter(){
             <Route path='/my-wallet' element={<MyWallet/>} />
             <Route path='/my-card' element={<MyCard/>} />
             <Route path='/setting' element={<Setting/>} />
+            <Route path='*' element={<Navigate to='/' />} />
         </Routes>
     )
 };
