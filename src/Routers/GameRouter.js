@@ -5,7 +5,6 @@ function GameRouter(){
     return(
         <Routes>
             <Route path="/choose" element={<ChooseGame/>} />
-            <Route path='*' element={<Navigate to='/' />} />
         </Routes>
     )
 };

@@ -28,7 +28,6 @@ function UserRouter(){
             <Route path='/my-wallet' element={<MyWallet/>} />
             <Route path='/my-card' element={<MyCard/>} />
             <Route path='/setting' element={<Setting/>} />
-            <Route path='*' element={<Navigate to='/' />} />
         </Routes>
     )
 };

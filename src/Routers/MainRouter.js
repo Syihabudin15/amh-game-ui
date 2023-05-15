@@ -16,7 +16,6 @@ function MainRouter(){
                 <Route path="/market/collection/:id" element={<MarketHero/>} />
                 <Route path="/game/*" element={<GameRouter/>} />
                 <Route path="/" element={<Main/>} />
-                <Route path="*" element={<Navigate to={'/'} />} />
             </Routes>
             <Footer />
         </Fragment>
