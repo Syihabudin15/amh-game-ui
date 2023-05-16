@@ -37,7 +37,18 @@ const HistoryMyHeroSlice = createSlice({
         [getAllMyHeroHistory.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.total = action.payload.count;
-            state.data = action.payload.rows;
+            let res = [];
+            for(let i=0; i < action.payload.rows.length; i++){
+                res.push({
+                    date: action.payload.rows[i].createdAt,
+                    from: action.payload.rows[i].mUserId,
+                    receiver: action.payload.rows[i].receiver,
+                    type: action.payload.rows[i].type,
+                    image: action.payload.rows[i].m_my_hero.m_hero.img
+                });
+            }
+            console.log(res)
+            state.data = res;
         }
     }
 });

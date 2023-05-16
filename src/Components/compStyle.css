@@ -121,6 +121,12 @@
     justify-content: center;
     margin: 5px;
 }
+.my-hero-button{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+}
 
 @media only screen and (max-width: 600px) {
     .menu-window{

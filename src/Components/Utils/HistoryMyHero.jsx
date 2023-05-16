@@ -1,19 +1,24 @@
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMyHeroHistory } from "../../Reduxs/Actions/HistoryMyHeroSlice";
-import { Pagination, Table } from "antd";
+import { Pagination, Table, Image } from "antd";
 
 function HistoryMyHero(){
     let [page, setPage] = useState(1);
     const {data, total} = useSelector(state => state.historyMyHero);
     const dis = useDispatch();
     const columns = [
-        {title: 'Date', dataIndex: 'createdAt'},
-        {title: 'From', dataIndex: 'mUserId'},
+        {title: 'Date', dataIndex: 'date'},
+        {title: 'From', dataIndex: 'from', render: (user) => {
+            return user? user : "Admin"
+        }},
         {title: 'Receiver', dataIndex: 'receiver'},
         {title: 'Type', dataIndex: 'type', render: (type) => {
-            type === 'send' ? <p style={{color: 'red', fontWeight: 'bolder'}}>{type.toUpperCase()}</p> : <p style={{color: 'green', fontWeight: 'bolder'}}>{type.toUpperCase()}</p>
+            return type === 'send' ? <p style={{color: 'red', fontWeight: 'bolder'}}>{type.toUpperCase()}</p> : <p style={{color: 'green', fontWeight: 'bolder'}}>{type.toUpperCase()}</p>
         }},
+        {title: 'Image', dataIndex: 'image', render: (img) => {
+            return <Image src={`https://amh-game-api.up.railway.app/img/${img}`} alt={img} width={'50px'} />
+        }}
     ]
 
     useEffect(() => {
@@ -21,7 +26,7 @@ function HistoryMyHero(){
     }, [page,dis]);
     return(
         <Fragment>
-            <Table columns={columns} dataSource={data} />
+            <Table columns={columns} dataSource={data} style={{overflowX: 'auto'}}/>
             <Pagination total={total/10} className="pagination" onChange={(e) => setPage(e)}/>
         </Fragment>
     )

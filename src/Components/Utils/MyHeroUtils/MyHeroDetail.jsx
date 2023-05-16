@@ -4,21 +4,25 @@ import Cookies from "js-cookie";
 import { Fragment, useState } from "react";
 
 export function MyHeroDetail({data}){
-    const [open, setOpen] = useState(false);
     const [load, setLoad] = useState(false);
+    const [send, setSend] = useState(false);
     const [sell, setSell] = useState(false);
     const [price, setPrice] = useState(0);
-    const [send, setSend] = useState(false);
     const [receiver, setReceiver] = useState();
     let token = Cookies.get('auth-token');
     let setFooter = () => {
         if(data.m_hero.level === 0){
-            return [<Button onClick={() => setOpen(false)}>Close</Button>]
+            return 
         }
         if(data.is_trade === true){
-            return [<Button loading={load} onClick={() => cancelSell()}>Cancel Sell</Button>]
+            return  <div className="my-hero-button"> 
+                        <Button loading={load} onClick={() => cancelSell()}>Cancel Sell</Button>
+                    </div>
         }
-        return [<Button onClick={() => setSell(true)} loading={load}>Sell</Button>,<Button loading={load} onClick={() => setSend(true)}>Send</Button>]
+        return  <div className="my-hero-button">
+                <Button onClick={() => setSell(true)} loading={load}>Sell</Button>
+                <Button type="primary" loading={load} onClick={() => setSend(true)}>Send</Button>    
+                </div>
     };
     const sendHero = async() => {
         if(!receiver) return;
@@ -36,6 +40,7 @@ export function MyHeroDetail({data}){
             });
             setLoad(false);
             notification.success({message: result.data.msg});
+            window.location.reload();
         }catch(err){
             notification.error({message: err.response.data.msg});
             setLoad(false);
@@ -76,6 +81,7 @@ export function MyHeroDetail({data}){
             });
             setLoad(false);
             notification.success({message: result.data.msg});
+            window.location.reload();
         }catch(err){
             notification.error({message: err.response.data.msg});
             setLoad(false);
@@ -83,40 +89,34 @@ export function MyHeroDetail({data}){
     };
     return(
         <Fragment>
-            <Button type="primary" onClick={() => setOpen(true)} block>Detail</Button>
-            <Modal open={open} footer={setFooter()} onCancel={() => setOpen(false)}>
+            <div>
                 <Row>
                     <Col span={8}>Date</Col> <Col span={3}>:</Col> <Col>{new Date(data.createdAt).toDateString()}</Col>
                 </Row>
                 <Row>
-                    <Col span={8}>My Point</Col> <Col span={3}>:</Col> <Col>{data.my_point} <span>/</span> <span>{data.m_hero.max_point}</span></Col>
+                    <Col span={8}>My Point</Col> <Col span={3}>:</Col> <Col>{data.my_point}<span style={{margin: '0 5px'}}>/</span>{data.m_hero.max_point}</Col>
+                </Row>
+                <Row>
+                    <Col span={8}>Power</Col> <Col span={3}>:</Col> <Col>{data.m_hero.power}</Col>
                 </Row>
                 <Row>
                     <Col span={8}>Level</Col> <Col span={3}>:</Col> <Col>{data.m_hero.level}</Col>
                 </Row>
                 <Row>
-                    <Col span={8}>Hero Power</Col> <Col span={3}>:</Col> <Col>{data.m_hero.power}</Col>
+                    {setFooter()}
                 </Row>
+            </div>
+            <Modal title="SEND" open={send} onCancel={() => setSend(false)} footer={[<Button onClick={() => sendHero()} loading={load}>Confirm</Button>]}>
                 <Row>
-                    <Col span={8}>Collection</Col> 
-                    <Col span={3}>:</Col> 
-                    <Col style={{fontWeight: 'bolder', fontStyle: 'italic'}}>{data.m_hero.m_collection.name}</Col>
-                </Row>
-            </Modal>
-            <Modal title='Sell Hero' onCancel={() => setSell(false)} open={sell} 
-                footer={[<Button type="primary" onClick={() => makeSell()} loading={load}>Confirm Sell</Button>]}
-            >
-                <Row>
-                    <Col span={7}>Price</Col> <Col span={3}>:</Col> 
-                    <Col span={10}><Input onChange={(e) => setPrice(e.target.value)} value={price} placeholder="Price"/></Col>
+                    <Col span={8}>To</Col> <Col span={3}>:</Col> 
+                    <Col span={12}><Input placeholder="Target Email" value={receiver} onChange={(e) => setReceiver(e.target.value)}/></Col>
                 </Row>
             </Modal>
-            <Modal title='Send Hero' open={send} onCancel={() => setSend(false)} footer={[
-                <Button loading={load} onClick={() => sendHero()} type="primary">Confirm</Button>
-            ]}>
+
+            <Modal title="SELL" open={sell} onCancel={() => setSell(false)} footer={[<Button loading={load} onClick={() => makeSell()}>Confirm</Button>]}>
                 <Row>
-                    <Col span={7}>Receiver</Col> <Col span={3}>:</Col> 
-                    <Col span={10}><Input onChange={(e) => setReceiver(e.target.value)} value={receiver} placeholder="Email Receiver"/></Col>
+                    <Col span={8}>Price</Col> <Col span={3}>:</Col> 
+                    <Col span={12}><Input placeholder="Target Email" value={price} onChange={(e) => setPrice(parseInt(e.target.value))}/></Col>
                 </Row>
             </Modal>
         </Fragment>
