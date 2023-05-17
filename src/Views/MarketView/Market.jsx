@@ -7,16 +7,22 @@ import { SearchCollectionName, getAllCollection } from "../../Reduxs/Actions/Col
 
 function Market(){
     const [page, setPage] = useState(1);
+    const [name, setName] = useState();
     const {loading, total, collections} = useSelector(state => state.collections);
     const dis = useDispatch();
 
     useEffect(() => {
-        dis(getAllCollection(page));// eslint-disable-next-line
-    }, []);
+        if(name){
+            dis(SearchCollectionName({page, name}));
+        }
+        else{
+            dis(getAllCollection(page));
+        }
+    }, [page, name, dis]);
     return(
         <Fragment>
             <div className="search">
-                <Input.Search placeholder="Collection Name" onChange={(e) => dis(SearchCollectionName({page,name: e.target.value}))}  className="input-search"/>
+                <Input.Search placeholder="Collection Name" onChange={(e) => setName(e.target.value)}  className="input-search"/>
             </div>
             <Divider/>
             <Spin spinning={loading}>
