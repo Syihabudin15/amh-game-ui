@@ -2,6 +2,8 @@ import { Fragment, useState } from "react";
 import { Button, Col, Image, Modal, Row} from "antd";
 import { useNavigate } from "react-router-dom";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 function CollectionCard({data}){
     const [modalOpen, settModalOpen] = useState(false);
     const nav = useNavigate();
@@ -13,7 +15,7 @@ function CollectionCard({data}){
         <Fragment>
             <div className="collection-card-wrapper">
                 <div className="img-collection-wrap">
-                    <Image src={`https://amh-game-api.up.railway.app/img/${data.img}`} alt={data.name} width={'100%'}/>
+                    <Image src={`${base}/img/${data.img}`} alt={data.name} width={'100%'}/>
                 </div>
                 <div className="title-collection">
                     <h4 style={{textAlign: 'center', fontStyle: 'italic'}}>{data.name}</h4>

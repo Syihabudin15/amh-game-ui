@@ -5,6 +5,8 @@ import { getAllMyHero } from '../../Reduxs/Actions/MyHeroSlice';
 import HistoryMyHero from "../../Components/Utils/HistoryMyHero";
 import { MyHeroDetail } from "../../Components/Utils/MyHeroUtils/MyHeroDetail";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 function MyHero(){
     const {isLoading, myHeroes, total} = useSelector(state => state.myHero);
     const [type, setType] = useState('all');
@@ -33,7 +35,7 @@ function MyHero(){
                         myHeroes.map((e,i) => (
                             <div key={i} className="my-hero-wrap">
                                 <div className="my-hero-img">
-                                    <Image src={`https://amh-game-api.up.railway.app/img/${e.m_hero.img}`}
+                                    <Image src={`${base}/img/${e.m_hero.img}`}
                                         alt={e.m_hero.img} width={'100%'} height={'100%'} />
                                 </div>
                                 <div className="my-herodetail-wrap">

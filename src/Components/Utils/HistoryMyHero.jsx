@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllMyHeroHistory } from "../../Reduxs/Actions/HistoryMyHeroSlice";
 import { Pagination, Table, Image } from "antd";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 function HistoryMyHero(){
     let [page, setPage] = useState(1);
     const {data, total} = useSelector(state => state.historyMyHero);
@@ -17,7 +19,7 @@ function HistoryMyHero(){
             return type === 'send' ? <p style={{color: 'red', fontWeight: 'bolder'}}>{type.toUpperCase()}</p> : <p style={{color: 'green', fontWeight: 'bolder'}}>{type.toUpperCase()}</p>
         }},
         {title: 'Image', dataIndex: 'image', render: (img) => {
-            return <Image src={`https://amh-game-api.up.railway.app/img/${img}`} alt={img} width={'50px'} />
+            return <Image src={`${base}/img/${img}`} alt={img} width={'50px'} />
         }}
     ]
 

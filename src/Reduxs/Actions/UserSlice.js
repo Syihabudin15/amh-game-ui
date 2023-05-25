@@ -3,11 +3,13 @@ import { notification } from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 export const getUser = createAsyncThunk('user/getUser', async () => {
     let token = Cookies.get('auth-token');
     let result = await axios.request({
         method: 'GET',
-        url: 'https://amh-game-api.up.railway.app/api/user',
+        url: `${base}/api/user`,
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',
@@ -21,7 +23,7 @@ export const UserUpdate = createAsyncThunk('/user/update', async(data) => {
     let token = Cookies.get('auth-token');
     let result = await axios.request({
         method: 'PUT',
-        url: 'https://amh-game-api.up.railway.app/api/user/update',
+        url: `${base}/api/user/update`,
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',

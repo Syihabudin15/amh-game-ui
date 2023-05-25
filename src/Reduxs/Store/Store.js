@@ -8,6 +8,7 @@ import CollectionSlice from "../Actions/CollectionSlice";
 import HeroesSlice from "../Actions/HeroesSlice";
 import MyHeroSlice from "../Actions/MyHeroSlice";
 import HistoryMyHeroSlice from "../Actions/HistoryMyHeroSlice";
+import EventSlice from "../Actions/EventSlice";
 
 export default configureStore({
     reducer: {
@@ -19,6 +20,7 @@ export default configureStore({
         collections: CollectionSlice,
         heroes: HeroesSlice,
         myHero: MyHeroSlice,
-        historyMyHero: HistoryMyHeroSlice
+        historyMyHero: HistoryMyHeroSlice,
+        events: EventSlice
     }
 });

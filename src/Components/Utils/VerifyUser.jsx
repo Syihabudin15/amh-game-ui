@@ -3,6 +3,8 @@ import { Button, Modal, Row, Col, Input, notification} from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 function VerifyUser(){
     const [loading, setLoading] = useState(false);
     const [loadingConfirm, setLoadConfirm] = useState(false);
@@ -22,7 +24,7 @@ function VerifyUser(){
             // eslint-disable-next-line
             let sendEmail = await axios.request({
                 method: 'POST',
-                url: 'https://amh-game-api.up.railway.app/api/user/req-verify',
+                url: `${base}/api/user/req-verify`,
                 headers: {
                     accept: 'application/json',
                     'content-type': 'application/json',
@@ -51,7 +53,7 @@ function VerifyUser(){
             // eslint-disable-next-line
             let verify = await axios.request({
                 method: 'POST',
-                url: 'https://amh-game-api.up.railway.app/api/user/verify',
+                url: `${base}/api/user/verify`,
                 headers: {
                     accept: 'application/json',
                     'content-type': 'application/json',

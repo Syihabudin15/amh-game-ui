@@ -6,6 +6,8 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 function SignUp(){
     const [spin, setSpin] = useState(false);
     const nav = useNavigate();
@@ -14,7 +16,7 @@ function SignUp(){
         setSpin(true);
         try{
             // eslint-disable-next-line
-            let result = await axios.post('https://amh-game-api.up.railway.app/api/sign-up', {email: e.email, phone: e.phone, password: e.password});
+            let result = await axios.post(`${base}/api/sign-up`, {email: e.email, phone: e.phone, password: e.password});
             notification.success({message: 'Register Success'});
             nav('/sign-in');
         }catch(err){

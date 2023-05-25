@@ -2,11 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 export const getWallet = createAsyncThunk('/user/wallet', async () => {
     let token = Cookies.get('auth-token');
     let result = await axios.request({
         method: 'GET',
-        url: 'https://amh-game-api.up.railway.app/api/user/wallet',
+        url: `${base}/api/user/wallet`,
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',

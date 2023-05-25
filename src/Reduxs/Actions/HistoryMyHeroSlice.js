@@ -3,12 +3,13 @@ import { notification } from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const base = process.env.BASE || 'http://localhost:5000';
 
 export const getAllMyHeroHistory = createAsyncThunk('/my-heroes/history', async (page) => {
     let token = Cookies.get('auth-token');
     let result = await axios.request({
         method: 'GET',
-        url: `https://amh-game-api.up.railway.app/api/user/my-hero/history?page=${page}`,
+        url: `${base}/api/user/my-hero/history?page=${page}`,
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',

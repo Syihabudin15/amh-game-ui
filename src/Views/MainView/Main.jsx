@@ -1,7 +1,10 @@
 import { Button, Form, Input } from "antd";
 import { ArrowRightOutlined } from '@ant-design/icons';
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 function Main(){
+    console.log(base);
     return(
         <section title="main website">
             <div className="main-top">

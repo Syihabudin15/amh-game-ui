@@ -127,6 +127,20 @@
     justify-content: space-evenly;
     padding: 10px;
 }
+.card-my-event{
+    border: 1px solid #eee;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.my-event-top{
+    width: 80vw;
+}
+.my-event-button button{
+    display: block;
+    margin: 10px auto;
+}
 
 @media only screen and (max-width: 600px) {
     .menu-window{
@@ -155,5 +169,11 @@
     }
     .sosmed{
         padding: 5px 8px;
+    }
+    .my-event-button {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
     }
 }

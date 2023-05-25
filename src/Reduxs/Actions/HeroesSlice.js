@@ -2,25 +2,27 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { notification } from "antd";
 import axios from "axios";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 export const getHeroCollections = createAsyncThunk('/collectoin/heroes', async ({page, id}) => {
-    let result = await axios.get(`https://amh-game-api.up.railway.app/api/collection/heroes?page=${page}&id=${id}`);
+    let result = await axios.get(`${base}/api/collection/heroes?page=${page}&id=${id}`);
     return result.data.data;
 });
 
 export const getAllHeroes = createAsyncThunk('/heroes/get', async (page) => {
-    let result = await axios.get(`https://amh-game-api.up.railway.app/api/marketplace/heroes?page=${page}`);
+    let result = await axios.get(`${base}/api/marketplace/heroes?page=${page}`);
     return result.data.data;
 });
 export const SearchByLevel = createAsyncThunk('/heroes/level', async ({page, level}) => {
-    let result = await axios.get(`https://amh-game-api.up.railway.app/api/marketplace/heroes/level?page=${page}&level=${level}`);
+    let result = await axios.get(`${base}/api/marketplace/heroes/level?page=${page}&level=${level}`);
     return result.data.data;
 });
 export const SearchByPrice = createAsyncThunk('/heroes/price', async({page, min, max}) => {
-    let result = await axios.get(`https://amh-game-api.up.railway.app/api/marketplace/heroes/price?page=${page}&min=${min}&max=${max}`);
+    let result = await axios.get(`${base}/api/marketplace/heroes/price?page=${page}&min=${min}&max=${max}`);
     return result.data.data;
 });
 export const SearchByCollectionName = createAsyncThunk('/heroes/collections', async({page, name}) => {
-    let result = await axios.get(`https://amh-game-api.up.railway.app/api/marketplace/heroes/collection?page=${page}&name=${name}`);
+    let result = await axios.get(`${base}/api/marketplace/heroes/collection?page=${page}&name=${name}`);
     return result.data.data;
 });
 

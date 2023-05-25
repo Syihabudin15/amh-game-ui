@@ -3,11 +3,13 @@ import { notification } from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 export const getCard = createAsyncThunk('/card/get', async () => {
     let token = Cookies.get('auth-token');
     let result = await axios.request({
         method: 'GET',
-        url: 'https://amh-game-api.up.railway.app/api/user/card',
+        url: `${base}/api/user/card`,
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',
@@ -21,7 +23,7 @@ export const CreateCard = createAsyncThunk('/card/create', async (data) => {
     let token = Cookies.get('auth-token');
     let result = await axios.request({
         method: 'POST',
-        url: 'https://amh-game-api.up.railway.app/api/user/card',
+        url: `${base}/api/user/card`,
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',
@@ -36,7 +38,7 @@ export const DeleteCard = createAsyncThunk('/card/delete', async (id) => {
     let token = Cookies.get('auth-token');
     let result = await axios.request({
         method: 'DELETE',
-        url: `https://amh-game-api.up.railway.app/api/user/card/${id}`,
+        url: `http://localhost:5000/api/user/card/${id}`,
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',

@@ -3,6 +3,8 @@ import { Button, Image, Row, Col, Modal, notification } from "antd";
 import Cookies from "js-cookie";
 import axios from "axios";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 function HeroCardMarketPlace({data}){
     const [isOpen, setOpen] = useState(false);
     const [load, setLoad] = useState(false);
@@ -12,7 +14,7 @@ function HeroCardMarketPlace({data}){
         try{
             let result = await axios.request({
                 method: 'POST',
-                url: `https://amh-game-api.up.railway.app/api/marketplace/buy/${data.id}`,
+                url: `${base}/api/marketplace/buy/${data.id}`,
                 headers: {
                     accept: 'application/json',
                     'content-type': 'application/json',
@@ -30,7 +32,7 @@ function HeroCardMarketPlace({data}){
     return(
         <Fragment>
             <div className="hero-card">
-                <Image src={`https://amh-game-api.up.railway.app/img/${data.m_my_hero.m_hero.img}`} 
+                <Image src={`${base}/img/${data.m_my_hero.m_hero.img}`} 
                     alt={data.m_my_hero.m_hero.img} width={140} height={130}
                 />
                 <div className="button-card">

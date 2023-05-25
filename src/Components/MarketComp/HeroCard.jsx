@@ -4,6 +4,8 @@ import { Fragment, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 function HeroCard({data}){
     const [isOpen, setOpen] = useState(false);
     const [isBuy, setIsBuy] = useState(false);
@@ -16,7 +18,7 @@ function HeroCard({data}){
         try{
             let result = await axios.request({
                 method: 'POST',
-                url: 'https://amh-game-api.up.railway.app/api/market/buy',
+                url: `${base}/api/market/buy`,
                 headers: {
                     accept: 'application/json',
                     'content-type': 'application/json',
@@ -33,7 +35,7 @@ function HeroCard({data}){
     return(
         <Fragment>
             <div className="hero-card">
-                <Image src={`https://amh-game-api.up.railway.app/img/${data.img}`} alt={data.level} width={140} height={130}/>
+                <Image src={`${base}/img/${data.img}`} alt={data.level} width={140} height={130}/>
                 <div className="button-card">
                     <Button type="primary" onClick={() => setOpen(true)} block>Detail</Button>
                 </div>

@@ -13,25 +13,6 @@ function Marketplace(){
     const [level, setLevel] = useState();
     const dis = useDispatch();
 
-    // const handleSearchName = async (e) => {
-    //     if(!e.target.value){
-    //         return 
-    //     }
-    //     await dis(SearchByCollectionName({page,name: e.target.value}));
-    // };
-    
-    // const handleLevel = async (e) => {
-    //     if(!e) return;
-    //     await dis(SearchByLevel({page,level: e}));
-    // }
-
-    // const handlePrice = async (e) => {
-    //     if(!e.target.value || !min){
-    //         return 
-    //     }
-    //     await dis(SearchByPrice({page, min: min, max: parseInt(e.target.value)}));
-    // };
-
     useEffect(() => {
         if(max || min ){
             dis(SearchByPrice({page, min, max}));

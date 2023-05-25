@@ -3,6 +3,7 @@ import { Fragment, useState } from "react"
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const base = process.env.BASE || 'http://localhost:5000';
 
 export function SendBalance(){
     const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ export function SendBalance(){
             // eslint-disable-next-line
             let result = await axios.request({
                 method: 'POST',
-                url: `https://amh-game-api.up.railway.app/api/user/wallet/send`,
+                url: `${base}/api/user/wallet/send`,
                 headers: {
                     accept: 'application/json',
                     'content-type': 'application/json',
@@ -75,7 +76,7 @@ export function Deposit(){
             let token = Cookies.get('auth-token');
             let result = await axios.request({
                 method: 'POST',
-                url: `https://amh-game-api.up.railway.app/api/user/deposit/ewallet`,
+                url: `${base}/api/user/deposit/ewallet`,
                 headers: {
                     accept: 'application/json',
                     'content-type': 'application/json',

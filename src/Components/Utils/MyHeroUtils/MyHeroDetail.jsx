@@ -3,6 +3,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { Fragment, useState } from "react";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 export function MyHeroDetail({data}){
     const [load, setLoad] = useState(false);
     const [send, setSend] = useState(false);
@@ -30,7 +32,7 @@ export function MyHeroDetail({data}){
         try{
             let result = await axios.request({
                 method: 'POST',
-                url: 'https://amh-game-api.up.railway.app/api/user/my-hero/send',
+                url: `${base}/api/user/my-hero/send`,
                 headers: {
                     accept: 'application/json',
                     'content-type': 'application/json',
@@ -51,7 +53,7 @@ export function MyHeroDetail({data}){
         try{
             let result = await axios.request({
                 method: 'POST',
-                url: 'https://amh-game-api.up.railway.app/api/marketplace/sell',
+                url: `${base}/api/marketplace/sell`,
                 headers: {
                     accept: 'application/json',
                     'content-type': 'application/json',
@@ -72,7 +74,7 @@ export function MyHeroDetail({data}){
         try{
             let result = await axios.request({
                 method: 'POST',
-                url: `https://amh-game-api.up.railway.app/api/marketplace/sell/cancel/${data.id}`,
+                url: `${base}/api/marketplace/sell/cancel/${data.id}`,
                 headers: {
                     accept: 'application/json',
                     'content-type': 'application/json',

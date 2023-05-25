@@ -7,6 +7,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../Reduxs/Actions/MenuSlice";
 
+const base = process.env.BASE || 'http://localhost:5000';
+
 function SignIn(){
     const [spin, setSpin] = useState(false);
     const [checked, setChecked] = useState(true);
@@ -17,7 +19,7 @@ function SignIn(){
     const handleSubmit = async(e) => {
         setSpin(true);
         try{
-            await axios.post('https://amh-game-api.up.railway.app/api/sign-in', {email: e.email, password: e.password})
+            await axios.post(`${base}/api/sign-in`, {email: e.email, password: e.password})
             .then(res => {
                 notification.success({message: 'Login Success'});
                 Cookies.set('auth-token', res.data.data.token, {expires: 2});
