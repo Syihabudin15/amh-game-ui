@@ -10,7 +10,7 @@ export const getActiveEvent = createAsyncThunk('/events/active', async ({page}) 
     return result.data.data;
 });
 
-const EventSlive = createSlice({
+const EventSlice = createSlice({
     name: 'EventSlice',
     initialState: {
         isLoading: false,
@@ -33,4 +33,4 @@ const EventSlive = createSlice({
     }
 });
 
-export default EventSlive.reducer;
+export default EventSlice.reducer;

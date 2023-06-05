@@ -2,7 +2,7 @@ import { Row } from "antd";
 import { Fragment } from "react";
 import { BulbOutlined } from '@ant-design/icons';
 import GameCard from "../../Components/GameComp/GameCard";
-
+import { allGames } from "./DataGame";
 
 function ChooseGame(){
     return(
@@ -11,8 +11,9 @@ function ChooseGame(){
                 <h3 style={{textAlign: 'center', margin: 50, textShadow: '4px 4px 4px #aaa'}}>Choose Game</h3>
                 <section title="list game" className="list-game">
                     <Row>
-                        <GameCard />
-                        <GameCard />
+                        {allGames.map((e,i) => (
+                            <GameCard data={e} key={i} />
+                        ))}
                     </Row>
                 </section>
                 <section title="rules of the game" className="rules-game">

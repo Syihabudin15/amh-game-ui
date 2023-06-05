@@ -182,7 +182,7 @@
 .main-top-img{
     height: 300px;
     width: 200px;
-    background-image: url('../../public/assets/amh.png');
+    background-image: url('../assets/amh.png');
 }
 .main-feature{
     width: 90vw;
@@ -237,6 +237,19 @@
 }
 .list-my-event{
     margin: 20px auto;
+}
+.count-status{
+    background-color: #fff;
+}
+.count-status p{
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.count-status div{
+    border: 1px solid #aaa;
+    padding: 0 10px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px #aaa;
 }
 
 @media only screen and (max-width: 600px) {

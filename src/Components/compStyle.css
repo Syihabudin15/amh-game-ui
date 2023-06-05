@@ -141,6 +141,34 @@
     display: block;
     margin: 10px auto;
 }
+.choose-hero-wrap{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.choose-hero{
+    width: 40%;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    cursor: pointer;
+    gap: 10px;
+    align-items: center;
+}
+.choose-hero-img{
+    width: 50%;
+    height: 90%;
+    border: 1px solid #eee;
+}
+.choosed{
+    background-color: #b5b5b5;
+    transform: scale(.9);
+    transition: 100ms;
+}
 
 @media only screen and (max-width: 600px) {
     .menu-window{
@@ -174,6 +202,11 @@
         margin-top: 20px;
         display: flex;
         justify-content: center;
+        gap: 20px;
+    }
+    .choose-hero{
+        width: 90%;
+        height: 100px;
         gap: 20px;
     }
 }

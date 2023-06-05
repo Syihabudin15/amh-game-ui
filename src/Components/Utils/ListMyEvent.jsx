@@ -1,10 +1,10 @@
 import { Row, Col, Button } from "antd";
 import { Fragment } from "react";
 
-function ListMyEvent({data}){
+function ListMyEvent({data, key}){
     return(
         <Fragment>
-            <div className="card-my-event">
+            <div className="card-my-event" key={key}>
                 <div className="my-event-top">
                     <Row>
                         <Col span={8} style={{fontWeight: 'bolder'}}>Name</Col> <Col span={3}>:</Col> 
@@ -23,7 +23,7 @@ function ListMyEvent({data}){
                 </div>
                 <div className="my-event-button">
                     <Button>Detail</Button>
-                    <Button type="primary">Claim</Button>
+                    <Button type="primary" disabled={data.is_complete ? false : true}>Claim</Button>
                 </div>
             </div>
         </Fragment>

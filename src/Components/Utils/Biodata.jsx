@@ -1,9 +1,17 @@
 import { Row, Col } from 'antd';
 import '../compStyle.css';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllMyHero } from '../../Reduxs/Actions/MyHeroSlice';
 
 function Biodata({user}){
     let {firstName, lastName, phone, email, isVerified} = user;
+    const {total} = useSelector(state => state.myHero);
+    const dis = useDispatch();
+
+    useEffect(() => {
+        dis(getAllMyHero({type: 'all', page: 1}));
+    }, [dis]);
     return(
         <Fragment>
             <Row>
@@ -29,7 +37,7 @@ function Biodata({user}){
             <Row>
                 <Col span={6} className='bold-info'>Hero</Col>
                 <Col span={3}>:</Col>
-                <Col className='user-info'>0</Col>
+                <Col className='user-info'>{total}</Col>
             </Row>
         </Fragment>
     )

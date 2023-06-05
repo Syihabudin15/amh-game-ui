@@ -6,17 +6,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getUser } from '../../Reduxs/Actions/UserSlice';
 import { getActiveEvent } from '../../Reduxs/Actions/EventSlice';
+import { getMyEvent } from '../../Reduxs/Actions/MyEventSlice';
 import ListMyEvent from '../../Components/Utils/ListMyEvent';
 
 function Dashboard(){
     const user = useSelector(state => state.user);
     const events = useSelector(state => state.events);
+    const { data } = useSelector(state => state.myEvent);
     const dis = useDispatch();
     useEffect(() => {
         dis(getUser());
         dis(getActiveEvent({page: 1}));
+        dis(getMyEvent());
     }, [dis]);
-    // eslint-disable-next-line 
+    // eslint-disable-next-line
+    console.log(data); 
     return(
         <Spin spinning={user.isLoading}>
             <section title="user dashboard">
@@ -49,7 +53,9 @@ function Dashboard(){
                 <section title='my event' className='my-event-wrap'>
                     <h3 style={{textAlign: 'center'}}>My Events</h3>
                     <div className='list-my-event'>
-                        <ListMyEvent/>
+                        {data && data.map((e,i) => (
+                            <ListMyEvent key={i} data={e}/>
+                        ))}
                     </div>
                 </section>
             </section>

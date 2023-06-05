@@ -1,0 +1,88 @@
+.title-game{
+    text-align: center;
+    color: #fff;
+    margin: 50px auto;
+    text-shadow: 3px 3px 3px #000;
+}
+
+/* Memory Card */
+.memory-card-game{
+    border-radius: 10px;
+    width: 50vw;
+    margin: 50px auto;
+    border: 1px solid #aaa;
+    padding: 20px;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(3, .8fr);
+    grid-auto-rows: 130px;
+    gap: 1rem;
+    align-items: stretch;
+}
+.child-card{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px 4px #DEDEDE;
+    transition: 0.3s;
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+}
+.child-card img {
+    width: 100%;
+    height: 100%;
+}
+.card-face {
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.card-back-face {
+    transform: rotateY(180deg);
+}
+.is-flipped {
+    transform: rotateY(180deg);
+}
+.is-inactive {
+    visibility: hidden;
+    opacity: 0;
+}
+/* end Memory Card game */
+
+/* Flappy game */
+.flappy-wrap{
+    width: 50vw;
+    border: 1px solid #aaa;
+    box-shadow: 3px 3px 3px #aaa;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 30px auto;
+    box-sizing: border-box;
+    height: 60vh;
+    position: relative;
+}
+.img-bird-wrap{
+    position: absolute;
+    top: 45%;
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+/* End Flappy game */
+
+
+@media only screen and (max-width: 600px) {
+    .memory-card-game{
+        width: 80vw;
+    }
+    .memory-card-game{
+        grid-auto-rows: 120px;
+    }   
+    .flappy-wrap{
+        width: 90vw;
+        height: 50vh;
+    }
+}
