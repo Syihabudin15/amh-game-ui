@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllMyHeroHistory } from "../../Reduxs/Actions/HistoryMyHeroSlice";
 import { Pagination, Table, Image } from "antd";
 
-const base = process.env.BASE || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 function HistoryMyHero(){
     let [page, setPage] = useState(1);

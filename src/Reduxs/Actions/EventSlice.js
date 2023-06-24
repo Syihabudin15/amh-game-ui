@@ -3,7 +3,7 @@ import { notification } from "antd";
 import axios from "axios";
 // import Cookies from "js-cookie";
 
-const base = process.env.BASE || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 export const getActiveEvent = createAsyncThunk('/events/active', async ({page}) => {
     let result = await axios.get(`${base}/api/events/active?page=${page}`);

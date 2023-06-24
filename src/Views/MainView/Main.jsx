@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-const base = process.env.BASE || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 function Main(){
     const [data, setData] = useState({});

@@ -3,7 +3,7 @@ import { notification } from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const base = process.env.BASE || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 export const getCard = createAsyncThunk('/card/get', async () => {
     let token = Cookies.get('auth-token');
@@ -38,7 +38,7 @@ export const DeleteCard = createAsyncThunk('/card/delete', async (id) => {
     let token = Cookies.get('auth-token');
     let result = await axios.request({
         method: 'DELETE',
-        url: `http://localhost:5000/api/user/card/${id}`,
+        url: `${base}/api/user/card/${id}`,
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',

@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { Button, Col, Image, Modal, Row} from "antd";
 import { useNavigate } from "react-router-dom";
 
-const base = process.env.BASE || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 function CollectionCard({data}){
     const [modalOpen, settModalOpen] = useState(false);

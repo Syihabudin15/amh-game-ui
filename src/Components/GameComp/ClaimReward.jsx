@@ -3,7 +3,7 @@ import { Fragment, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-const base = process.env.BASE_URL || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 function ClaimReward({id, open, restart}){
     const [load, setLoad] = useState(false);

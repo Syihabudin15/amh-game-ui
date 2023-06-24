@@ -7,7 +7,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../Reduxs/Actions/MenuSlice";
 
-const base = process.env.BASE || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 function SignIn(){
     const [spin, setSpin] = useState(false);
@@ -36,7 +36,7 @@ function SignIn(){
             setSpin(false);
         }
     };
-
+console.log(base);
     useEffect(() => {
         let token = Cookies.get('auth-token');
         if(token){

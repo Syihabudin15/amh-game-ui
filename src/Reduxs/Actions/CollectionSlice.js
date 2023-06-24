@@ -2,8 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { notification } from "antd";
 import axios from "axios";
 
-const base = process.env.BASE || 'http://localhost:5000';
-
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 export const getAllCollection = createAsyncThunk('/collection/get', async (page) => {
     let result = await axios.get(`${base}/api/collection?page=${page}`);

@@ -3,7 +3,7 @@ import { Button, Image, Row, Col, Modal, notification } from "antd";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-const base = process.env.BASE || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 function HeroCardMarketPlace({data}){
     const [isOpen, setOpen] = useState(false);

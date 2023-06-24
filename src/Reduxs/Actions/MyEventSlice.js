@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
-const base = process.env.BASE_URL || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 export const getMyEvent = createAsyncThunk('/my-event/get', async() => {
     let token = Cookies.get('auth-token');

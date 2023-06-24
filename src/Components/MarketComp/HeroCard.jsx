@@ -4,7 +4,7 @@ import { Fragment, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const base = process.env.BASE || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 function HeroCard({data}){
     const [isOpen, setOpen] = useState(false);

@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getAllMyHero } from "../../Reduxs/Actions/MyHeroSlice";
-const base = process.env.BASE || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 function GameCard({data}){
     const {isLoading, myHeroes, total} = useSelector(state => state.myHero);

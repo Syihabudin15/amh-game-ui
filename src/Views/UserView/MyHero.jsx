@@ -5,7 +5,7 @@ import { getAllMyHero } from '../../Reduxs/Actions/MyHeroSlice';
 import HistoryMyHero from "../../Components/Utils/HistoryMyHero";
 import { MyHeroDetail } from "../../Components/Utils/MyHeroUtils/MyHeroDetail";
 
-const base = process.env.BASE || 'http://localhost:5000';
+const base = process.env.REACT_APP_BASE || 'http://localhost:5000';
 
 function MyHero(){
     const {isLoading, myHeroes, total} = useSelector(state => state.myHero);
