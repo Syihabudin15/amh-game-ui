@@ -50,7 +50,7 @@ function SignUp(){
                     </Form.Item>
 
                     <Form.Item label='Phone' name='phone'>
-                        <Input placeholder="Phone Number" />
+                        <Input placeholder="Phone Number" type="number" />
                     </Form.Item>
 
                     <Form.Item label='Password' name='password'>
