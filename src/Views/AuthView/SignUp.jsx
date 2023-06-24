@@ -25,9 +25,8 @@ function SignUp(){
             }else{
                 notification.error({message: err.response.data.msg});
             }
-        }finally{
-            setSpin(false);
         }
+        setSpin(false);
     };
 
     useEffect(() => {
