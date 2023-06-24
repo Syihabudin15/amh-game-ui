@@ -16,9 +16,13 @@ function SignUp(){
         setSpin(true);
         try{
             // eslint-disable-next-line
-            let result = await axios.post(`${base}/api/sign-up`, {email: e.email, phone: e.phone, password: e.password});
-            notification.success({message: 'Register Success'});
-            nav('/sign-in');
+            await axios.post(`${base}/api/sign-up`, {email: e.email, phone: e.phone, password: e.password})
+            then(res => {
+                notification.success({message: 'Register Success'});
+                nav('/sign-in');
+            }).catch(err => {
+                notification.error({message: err.response.data.msg});
+            })
         }catch(err){
             if(err.response.data.statusCode === 500){
                 notification.error({message: "Email or Phone alredy registered"});
