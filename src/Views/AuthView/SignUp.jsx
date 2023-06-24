@@ -17,12 +17,12 @@ function SignUp(){
         try{
             // eslint-disable-next-line
             await axios.post(`${base}/api/sign-up`, {email: e.email, phone: e.phone, password: e.password})
-            then(res => {
+            .then(res => {
                 notification.success({message: 'Register Success'});
                 nav('/sign-in');
             }).catch(err => {
                 notification.error({message: err.response.data.msg});
-            })
+            });
         }catch(err){
             if(err.response.data.statusCode === 500){
                 notification.error({message: "Email or Phone alredy registered"});
