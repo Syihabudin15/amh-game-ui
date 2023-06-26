@@ -147,15 +147,18 @@
     box-shadow: 2px 2px 2px #aaa;
 }
 .col-game{
+    width: 20vw;
     border: 1px solid #aaa;
-    width: 30%;
-    margin: 20px auto;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 5px 5px 5px #aaa;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background-color: #eee;
 }
 .list-game{
-    margin: 50px 0;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 .rules-game{
     margin: 100px 20px;

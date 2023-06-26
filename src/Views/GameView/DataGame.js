@@ -1,7 +1,7 @@
 export const allGames = [
-    {name: 'Flappy Bird', url: '/flappy', img: '', 
+    {name: 'Flappy Bird', url: '/flappy', img: require('../../assets/memory-img.png'), 
     desc: 'Flappy bird is a game with unique Sistem, you must passed the Pillar for completing this game'},
-    {name: 'Memory Game', url: '/memory', img: '',
+    {name: 'Memory Game', url: '/memory', img: require('../../assets/memory-img.png'),
     desc: 'Memory game is a game with Memory Skill, user can Upgrade their memory with this game'}
 ];
 

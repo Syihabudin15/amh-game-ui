@@ -23,17 +23,21 @@ function GameCard({data}){
     }, [dis, page]);
     return(
         <Fragment>
-            <Col className="col-game">
-                <Image src="#" />
-                <div>
-                    <p>{data.name}</p>
-                    <p>Description : </p>
-                    <p style={{height: 100, overflowY: 'auto'}}>{data.desc}</p>
+            <div>
+                <div className="col-game">
+                    <div style={{borderBottom: '1px solid black', height: 170}}>
+                        <Image src={data.img} height={'100%'} width={'100%'}/>
+                    </div>
+                    <div>
+                        <p style={{fontWeight: 'bold'}}>{data.name}</p>
+                        <p>Description : </p>
+                        <p style={{margin: 15}}>{data.desc}</p>
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <Button type="primary" onClick={() => setOpen(true)}>Play Game</Button>
+                    </div>
                 </div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <Button type="primary" onClick={() => setOpen(true)}>Play Game</Button>
-                </div>
-            </Col>
+            </div>
             <Modal title='Choose Hero' open={open} footer={[]} onCancel={() => setOpen(false)}>
                 <Spin spinning={isLoading}>
                     {myHeroes && myHeroes.map((e,i) => (

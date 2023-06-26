@@ -1,4 +1,3 @@
-import { Row } from "antd";
 import { Fragment } from "react";
 import { BulbOutlined } from '@ant-design/icons';
 import GameCard from "../../Components/GameComp/GameCard";
@@ -9,12 +8,12 @@ function ChooseGame(){
         <Fragment>
             <section title="choose-game" >
                 <h3 style={{textAlign: 'center', margin: 50, textShadow: '4px 4px 4px #aaa'}}>Choose Game</h3>
-                <section title="list game" className="list-game">
-                    <Row>
+                <section title="list game" className="list-game-wrap">
+                    <div className="list-game">
                         {allGames.map((e,i) => (
                             <GameCard data={e} key={i} />
                         ))}
-                    </Row>
+                    </div>
                 </section>
                 <section title="rules of the game" className="rules-game">
                     <h4>RULES <span style={{color: 'yellow', marginLeft: 10}}><BulbOutlined /></span></h4>
