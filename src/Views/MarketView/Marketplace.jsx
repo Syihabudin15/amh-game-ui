@@ -14,7 +14,7 @@ function Marketplace(){
     const dis = useDispatch();
 
     useEffect(() => {
-        if(max || min ){
+        if(max && min ){
             dis(SearchByPrice({page, min, max}));
         }
         else if(name){
@@ -39,8 +39,8 @@ function Marketplace(){
                     {label: 'Level 2', value: 2}
                 ]} placeholder='Level' allowClear style={{padding: 5}} />
                 <div className="price-range">
-                    <Input placeholder="price" onChange={(e) => setMin(e.target.value)} />
-                    <Input placeholder="range" onChange={(e) => setMax(e.target.value)} />
+                    <Input placeholder="price" type="number" onChange={(e) => setMin(e.target.value)} />
+                    <Input placeholder="range" type="number" onChange={(e) => setMax(e.target.value)} />
                 </div>
             </div>
             <Divider/>
