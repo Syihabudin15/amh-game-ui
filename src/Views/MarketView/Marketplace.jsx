@@ -7,14 +7,14 @@ import HeroCardMarketPlace from "../../Components/MarketComp/HeroCardMarketplace
 function Marketplace(){
     const {heroes, loading, total} = useSelector(state => state.heroes);
     const [page, setPage] = useState(1);
-    const [min, setMin] = useState();
+    const [min, setMin] = useState(0);
     const [max, setMax] = useState();
     const [name, setName] = useState();
     const [level, setLevel] = useState();
     const dis = useDispatch();
 
     useEffect(() => {
-        if(max && min ){
+        if(max ){
             dis(SearchByPrice({page, min, max}));
         }
         else if(name){
@@ -39,8 +39,8 @@ function Marketplace(){
                     {label: 'Level 2', value: 2}
                 ]} placeholder='Level' allowClear style={{padding: 5}} />
                 <div className="price-range">
-                    <Input placeholder="price" type="number" onChange={(e) => setMin(e.target.value)} />
-                    <Input placeholder="range" type="number" onChange={(e) => setMax(e.target.value)} />
+                    <Input placeholder="price" type="number" value={min} onChange={(e) => setMin(e.target.value)} />
+                    <Input placeholder="range" type="number" value={max} onChange={(e) => setMax(e.target.value)} />
                 </div>
             </div>
             <Divider/>
